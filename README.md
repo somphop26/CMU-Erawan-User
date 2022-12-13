@@ -450,7 +450,7 @@ Submit งานใช้ โดยใช้คำสั่ง %%sbatch แล�
   
 ตรวจสอบผลลัพธ์
 
-    cat gpujob.??.out
+    cat jpjob.??.out
 
 ![enter image description here](https://github.com/somphop26/CMU-Erawan-User/blob/main/imp/jupyter03.png?raw=true)
 
