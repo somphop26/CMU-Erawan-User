@@ -18,18 +18,20 @@ Network
 
 
 ## Nework share directory (via NFS)
-/home 288TB Read Write
-/opt/ohpc/pub Read only
+- /home 288TB Read Write
+- /opt/ohpc/pub Read only
 
 ### เมื่อ wekaio (Raw 500TB) Raw
-/proj แล้วแต่กำหนดให้กับผู้ใช้
-/sharedata/blast/db 100TB
-/scratch 100TB ลบทุก 60 วัน
+- /proj แล้วแต่กำหนดให้กับผู้ใช้
+- /sharedata/blast/db 100TB
+- /scratch 100TB ลบทุก 60 วัน
 
 
 ### NCBI blast database
 ตอนนี้ /home/sharedata/blast/db
+
 Compute node Local disk
+
 /scratch.local
  
 ### List of application software
@@ -77,9 +79,11 @@ Compute node Local disk
 - 3.18 WRF 4.4.1
 - 3.19 WRF-Chem 4.4.1
   
-#### # Share space for application data
-#### # NCBI blast database
-#### # ตอนนี้ /home/sharedata/blast/db หลังจากระบบเรียบร้อยแล้วจะเปลี่ยนเป็น /sharedata/blast/db โดยตอนนี้มีข้อมูลต่อไปนี้วางอยู่แล้ว
+#Share space for application data
+
+#NCBI blast database
+
+#ตอนนี้ /home/sharedata/blast/db หลังจากระบบเรียบร้อยแล้วจะเปลี่ยนเป็น /sharedata/blast/db โดยตอนนี้มีข้อมูลต่อไปนี้วางอยู่แล้ว
 -   nr
 -   nt
 -   refseq_protein
