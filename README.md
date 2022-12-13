@@ -467,7 +467,7 @@ Running Jupyter on Slurm GPU Nodes
 
 ทดลองรันที่เครื่อง compute
 
-    singularity exec --nv /opt/ohpc/pub/apps/singularity/cp2k_v9.1.0.sif mpirun --bind-to none -n 1 binder.sh cp2k.psmp -i H2O-dft-ls.NREP2.inp
+    singularity run --nv /opt/ohpc/pub/apps/singularity/cp2k_v9.1.0.sif mpirun -np 1  binder.sh cp2k.psmp -i H2O-dft-ls.NREP2.inp
 
   
 เขียนไฟล์ Job script
@@ -483,7 +483,8 @@ Running Jupyter on Slurm GPU Nodes
     
     #CUDA matrix multiplication
     
-    singularity exec --nv /opt/ohpc/pub/apps/singularity/cp2k_v9.1.0.sif mpirun -n 1 binder.sh cp2k.psmp -i ~/H2O-dft-ls.NREP2.inp
+    singularity run --nv /opt/ohpc/pub/apps/singularity/cp2k_v9.1.0.sif mpirun -np 1  binder.sh cp2k.psmp -i H2O-dft-ls.NREP2.inp
+
 
   
 รัน Job script
@@ -502,7 +503,7 @@ gromac on GPU
     tar xvf water_GMX50_bare.tar.gz
     cd ./water-cut1.0_GMX50_bare/1536
 
-run
+ทดลองรันที่เครื่อง compute
 
     module load gromacs_gpu
     gmx grompp -f pme.mdp
