@@ -503,17 +503,10 @@ gromac on GPU
     tar xvf water_GMX50_bare.tar.gz
     cd ./water-cut1.0_GMX50_bare/1536
 
-ทดลองรันที่เครื่อง compute
+ทดลองรันที่เครื่อง
 
     module load gromacs_gpu
     gmx grompp -f pme.mdp
-    gmx mdrun -nt 8 -nb gpu -pin on -v -noconfout -nsteps 5000 -s -ntomp 10 topol.tpr
-    
-
-8 threads, fixed gpu id 7 
-
-    gmx mdrun -nt 8 -gpu_id 7 -v -noconfout -nsteps 5000 -s  topol.tpr
-    
 
 สร้างไฟล์ Job script
 
@@ -527,3 +520,5 @@ gromac on GPU
     
     module load gromacs-gpu
     gmx mdrun -nt $SLURM_CPUS_PER_TASK -v -noconfout -nsteps 5000 -s  topol.tpr
+   
+sbatch gromac-water.gpu
