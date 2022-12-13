@@ -392,7 +392,10 @@ source [https://wandb.ai/wandb/common-ml-errors/reports/How-To-Use-GPU-with-PyTo
     print(X_train)
     
 ทดลองรันสคริปต์
-python runPytorch.py
+
+    python runPytorch.py
+   
+**ผลลัพธ์ที่ได้จะ Error เนื่องจากเครื่อง Scheduler node ไม่มี GPU จะต้องส่งคำสั่งไปรันที่เครื่อง compute
 
 สร้างไฟล์ Job script
 
