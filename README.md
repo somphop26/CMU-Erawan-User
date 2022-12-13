@@ -502,10 +502,12 @@ run
     module load gromacs_gpu
     gmx grompp -f pme.mdp
     gmx mdrun -nt 8 -nb gpu -pin on -v -noconfout -nsteps 5000 -s -ntomp 10 topol.tpr
+    
 
 8 threads, fixed gpu id 7 
 
     gmx mdrun -nt 8 -gpu_id 7 -v -noconfout -nsteps 5000 -s  topol.tpr
+    
 
 สร้างไฟล์ Job script
 
@@ -515,7 +517,7 @@ run
     #SBATCH --gpus=1              # total number of GPUs
     #SBATCH -p gpu                # specific partition (compute, memory, gpu)
     #SBATCH -o gromacs.%j.out     # Name of stdout output file (%j expands to jobId)
-    #SBATCH --cpus-per-task=4
+    #SBATCH --cpus-per-task=8
     
     module load gromacs-gpu
-    gmx mdrun  -v -noconfout -nsteps 5000 -s  topol.tpr
+    gmx mdrun -nt $SLURM_CPUS_PER_TASK -v -noconfout -nsteps 5000 -s  topol.tpr
