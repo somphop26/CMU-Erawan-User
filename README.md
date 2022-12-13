@@ -294,9 +294,8 @@ MPI Run
 
 Create hostfile (for openmpi) 
 
-    nano hosts
+nano hosts
 
-  
     compute0 slots=128
     compute1 slots=128
     compute2 slots=128
