@@ -142,15 +142,14 @@ Create file Job script "test.job"
     Rscript list.R
 
 
-
 | พารามิเตอร์ | คำอธิบาย |
 |--|--|
 | #SBATCH -p **[partition name]** | ระบุพาร์ติชันที่ต้องการใช้งาน |
 | #SBATCH -J **[job name]** | ระบุชื่องาน |
 | #SBATCH -o **[output name]** | ระบุชื่อไฟล์ผลลัพธ์ |
 | #SBATCH -N **[number of node]** | ระบุจำนวนเครื่อง (nodes) ที่ต้องการใช้งาน |
-| #SBATCH -t  **[time]**| ระบุระยะเวลาที่ใช้จำกัดในการรัน รูปแบบ ชั่วโมง:นาที:วินาที |
-| #SBATCH --gpus=[number of GPU] | ระบุจำนวน GPU ที่ใช้ |
+| #SBATCH -t **[time]** | ระบุระยะเวลาที่ใช้จำกัดในการรัน รูปแบบ ชั่วโมง:นาที:วินาที |
+| #SBATCH --gpus=**[number of GPU]** | ระบุจำนวน GPU ที่ใช้ |
 
 Run
 
@@ -159,6 +158,8 @@ Run
 View status
 
     squeue
+
+![enter image description here](https://raw.githubusercontent.com/somphop26/CMU-Erawan-User/main/imp/Screenshot%20from%202022-12-13%2022-16-00.png)
 
 Cancel job
 
