@@ -97,7 +97,7 @@ Compute node Local disk
 
 เช่น
 
-    ssh user01@erawan.cmu.ac.th
+    ssh user@erawan.cmu.ac.th
 
 ## วิธีการคัดลอกไฟล์
 
@@ -105,7 +105,7 @@ Compute node Local disk
 
 เช่น
 
-    scp C:\temp\test.txt user001@10.110.0.11:/home/user001/
+    scp C:\temp\test.txt user@10.110.0.11:/home/user/
 
 
 ## การใช้งาน module environment
