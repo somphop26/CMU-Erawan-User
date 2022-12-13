@@ -452,8 +452,7 @@ Submit งานใช้ โดยใช้คำสั่ง %%sbatch แล�
 
     cat jpjob.??.out
 
-![enter image description here](https://github.com/somphop26/CMU-Erawan-User/blob/main/imp/jupyter03.png?raw=true)
-
+![enter image description here](https://github.com/somphop26/CMU-Erawan-User/blob/main/imp/Screenshot%20from%202022-12-13%2022-55-24.png?raw=true)
   
 
 Running Jupyter on Slurm GPU Nodes
