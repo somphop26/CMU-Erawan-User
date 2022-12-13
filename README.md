@@ -487,7 +487,7 @@ Running Jupyter on Slurm GPU Nodes
 
 
   
-รัน Job script
+รัน Job script ที่เครื่อง erawan
 
     sbatch runCP2K
 
