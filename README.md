@@ -111,9 +111,9 @@ Compute node Local disk
 ## การใช้งาน module environment
 - module list เราโหลดอะไรอยู่บ้าง
 - module avail มีอะไรให้ใช้บ้าง
-- module load hwloc โหลดโมดูล hwloc
+- module load โหลดโมดูล 
 - module list แสดงโมดูลที่ถูกโหลด
-- module unload hwloc เลิกโหลด hwloc
+- module unload เลิกโหลดโมดูล
 - module swap ใช้กรณีที่โมดูลมีการ conflict กัน
 - module purge เลิกโหลดโมดูลทั้งหมด
 
