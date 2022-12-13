@@ -118,6 +118,19 @@ Compute node Local disk
 - module purge เลิกโหลดโมดูลทั้งหมด
 
 ## ตัวอย่างการรัน Slurm
+Create file "list.R"
+
+    sum(0:9)
+    append(LETTERS[1:13],letters[14:26])
+    c(1,6,4,9)*2
+    something <- c(1,4,letters[2])
+    length(something)
+
+Test R Script
+
+    Rscript list.R
+
+
 Create file Job script "test.job"
 
 
@@ -126,13 +139,7 @@ Create file Job script "test.job"
     #SBATCH -J mytest
     #SBATCH -o job.%j.out
     
-    hostname
-    date
-    free -h
-    sleep 10
-
-
-
+    Rscript list.R
 
 
 
@@ -143,6 +150,7 @@ Create file Job script "test.job"
 | #SBATCH -o **[output name]** | ระบุชื่อไฟล์ผลลัพธ์ |
 | #SBATCH -N **[number of node]** | ระบุจำนวนเครื่อง (nodes) ที่ต้องการใช้งาน |
 | #SBATCH -t  **[time]**| ระบุระยะเวลาที่ใช้จำกัดในการรัน รูปแบบ ชั่วโมง:นาที:วินาที |
+| #SBATCH --gpus=[number of GPU] | ระบุจำนวน GPU ที่ใช้ |
 
 Run
 
