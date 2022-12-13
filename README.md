@@ -483,7 +483,7 @@ Running Jupyter on Slurm GPU Nodes
     
     #CUDA matrix multiplication
     
-    singularity exec --nv /opt/ohpc/pub/apps/singularity/**cp2k**_v9.1.0**.sif** mpirun -n 1 binder.sh cp2k.psmp -i /home/cmu/cp2k/H2O-dft-ls.NREP2.inp
+    singularity exec --nv /opt/ohpc/pub/apps/singularity/cp2k_v9.1.0.sif mpirun -n 1 binder.sh cp2k.psmp -i ~/H2O-dft-ls.NREP2.inp
 
   
 รัน Job script
