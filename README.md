@@ -91,7 +91,7 @@ Compute node Local disk
 -   swissprot
 
 ## วิธีการรีโมท
-#เปิด PowerShell บน Windows จากนั้นพิมพ์คำสั่งด้านล่าง
+เปิด PowerShell บน Windows จากนั้นพิมพ์คำสั่งด้านล่าง
 
     ssh  [Username]@[IP Address or Domain name]
 
@@ -166,6 +166,7 @@ Jobs typically pass through several states in the course of their execution. The
 Job terminated due to launch failure, typically due to a hardware failure (e.g. unable to boot the node or block and the job can not be requeued).
 
 **CA CANCELLED**
+
 Job was explicitly cancelled by the user or system administrator. The job may or may not have been initiated.
 
 **CD COMPLETED**
@@ -185,6 +186,7 @@ Job is in the process of completing. Some processes on some nodes may still be a
 Job terminated on deadline.
 
 **F FAILED**
+
 Job terminated with non-zero exit code or other failure condition.
 
 **NF NODE_FAIL**
@@ -216,6 +218,7 @@ Job is being held after requested reservation was deleted.
 Job is being requeued by a federation.
 
 **RH REQUEUE_HOLD**
+
 Held job is being requeued.
 
 **RQ REQUEUED**
@@ -290,9 +293,9 @@ MPI Run
     mpirun -np 1 ./a.out
 
 Create hostfile (for openmpi) 
-
     nano hosts
-    --------------------
+
+  
     compute0 slots=128
     compute1 slots=128
     compute2 slots=128
