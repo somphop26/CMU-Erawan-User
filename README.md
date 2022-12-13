@@ -105,13 +105,13 @@ Compute node Local disk
 
 
 ## การใช้งาน module environment
-module list เราโหลดอะไรอยู่บ้าง
-module avail มีอะไรให้ใช้บ้าง
-module load hwloc โหลดโมดูล hwloc
-module list แสดงโมดูลที่ถูกโหลด
-module unload hwloc เลิกโหลด hwloc
-module swap ใช้กรณีที่โมดูลมีการ conflict กัน
-module purge เลิกโหลดโมดูลทั้งหมด
+- module list เราโหลดอะไรอยู่บ้าง
+- module avail มีอะไรให้ใช้บ้าง
+- module load hwloc โหลดโมดูล hwloc
+- module list แสดงโมดูลที่ถูกโหลด
+- module unload hwloc เลิกโหลด hwloc
+- module swap ใช้กรณีที่โมดูลมีการ conflict กัน
+- module purge เลิกโหลดโมดูลทั้งหมด
 
 ## ตัวอย่างการรัน Slurm
 Create file Job script "test.job"
@@ -138,7 +138,7 @@ Create file Job script "test.job"
 | #SBATCH -J **[job name]** | ระบุชื่องาน |
 | #SBATCH -o **[output name]** | ระบุชื่อไฟล์ผลลัพธ์ |
 | #SBATCH -N **[number of node]** | ระบุจำนวนเครื่อง (nodes) ที่ต้องการใช้งาน |
-|  #SBATCH -t  **[time]**| ระบุระยะเวลาที่ใช้จำกัดในการรัน รูปแบบ ชั่วโมง:นาที:วินาที |
+| #SBATCH -t  **[time]**| ระบุระยะเวลาที่ใช้จำกัดในการรัน รูปแบบ ชั่วโมง:นาที:วินาที |
 
 Run
 
