@@ -77,9 +77,9 @@ Compute node Local disk
 - 3.18 WRF 4.4.1
 - 3.19 WRF-Chem 4.4.1
   
-#Share space for application data
-#NCBI blast database
-#ตอนนี้ /home/sharedata/blast/db หลังจากระบบเรียบร้อยแล้วจะเปลี่ยนเป็น /sharedata/blast/db โดยตอนนี้มีข้อมูลต่อไปนี้วางอยู่แล้ว
+#### # Share space for application data
+#### # NCBI blast database
+#### # ตอนนี้ /home/sharedata/blast/db หลังจากระบบเรียบร้อยแล้วจะเปลี่ยนเป็น /sharedata/blast/db โดยตอนนี้มีข้อมูลต่อไปนี้วางอยู่แล้ว
 -   nr
 -   nt
 -   refseq_protein
@@ -204,6 +204,7 @@ Job terminated due to preemption.
 Job currently has an allocation.
 
 **RD RESV_DEL_HOLD**
+
 Job is being held after requested reservation was deleted.
 
 **RF REQUEUE_FED**
@@ -329,17 +330,17 @@ Submit job for batch execution
 รายละเอียด slurm เพิ่มเติม [https://thaisc.io/คู่มือผู้ใช้งาน/](https://thaisc.io/%E0%B8%84%E0%B8%B9%E0%B9%88%E0%B8%A1%E0%B8%B7%E0%B8%AD%E0%B8%9C%E0%B8%B9%E0%B9%89%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%87%E0%B8%B2%E0%B8%99/)
 
 
-### รัน Slurm ใช้ GPU ประมวลผล
-#ดาวน์โหลดไฟล์ซอร์สโค้ดสำหรับทดสอบ
+## ตัวอย่างการรัน Slurm ใช้ GPU
+ดาวน์โหลดไฟล์ซอร์สโค้ดสำหรับทดสอบ
 
     wget https://gist.githubusercontent.com/leimao/bea971e07c98ce669940111b48a4cd7b/raw/f55b4dbf6c51df6b3604f2b598643f9672251f7b/mm_optimization.cu
     
-#ทำการคอมไพล์ซอฟต์แวร์
+ทำการคอมไพล์ซอฟต์แวร์
 
     module load nvhpc
     nvcc mm_optimization.cu -o mm_optimization
 
-#สร้างไฟล์ Job Script
+สร้างไฟล์ Job Script
 
     vi gpu_job.sh
     --------------------------------------------------------------
@@ -356,21 +357,21 @@ Submit job for batch execution
     date    
     --------------------------------------------------------------
 
-#รัน
+รัน
 
     sbatch gpu_job.sh
     squeue
 
-#ตรวจสอบผลลัพธ์
+ตรวจสอบผลลัพธ์
 
     cat gpujob.??.out
 
 
-### Run python in slurm
+## Run python in slurm
 source [https://wandb.ai/wandb/common-ml-errors/reports/How-To-Use-GPU-with-PyTorch---VmlldzozMzAxMDk](https://wandb.ai/wandb/common-ml-errors/reports/How-To-Use-GPU-with-PyTorch---VmlldzozMzAxMDk)
 
 
-#สร้างไฟล์สำหรับรัน python
+สร้างไฟล์สำหรับรัน python
 
     vi runPytorch.py
     --------------------------------------------
@@ -380,10 +381,10 @@ source [https://wandb.ai/wandb/common-ml-errors/reports/How-To-Use-GPU-with-PyTo
     print(X_train)
     --------------------------------------------
     
-#ทดลองรันสคริปต์
+ทดลองรันสคริปต์
 python runPytorch.py
 
-#สร้างไฟล์ Job script
+สร้างไฟล์ Job script
 
     vi slurm-pytorch
     ----------------------------------------------
@@ -397,13 +398,13 @@ python runPytorch.py
     python runPytorch.py
     -------------------------------------------------------
 
-#submit slurm
+submit slurm
 
     sbatch slurm-pytorch
 
 
 
-### Jupyter notebook
+## Jupyter notebook
 เข้าใช้งานบน web browser ระบุ URL: [http://10.110.0.11:8000](http://10.110.0.11:8000/) แล้ว login เข้าระบบ
 คลิก + > เลือก Notebook
 #ดาวน์โหลดไฟล์ซอร์สโค้ดสำหรับทดสอบ
@@ -412,20 +413,20 @@ python runPytorch.py
 
   
 
-##ทำการคอมไพล์ซอฟต์แวร์
+ทำการคอมไพล์ซอฟต์แวร์
 
     module load nvhpc
     nvcc mm_optimization.cu -o mm_optimization
 
   
 
-#โหลด slurm-magic ก่อนใช้งานคำสั่ง slurm
+โหลด slurm-magic ก่อนใช้งานคำสั่ง slurm
 
     %load_ext slurm_magic
 
   
 
-#Submit งานใช้ โดยใช้คำสั่ง %%sbatch แล้วตามด้วย Job script ตามปกติ
+Submit งานใช้ โดยใช้คำสั่ง %%sbatch แล้วตามด้วย Job script ตามปกติ
 
     %%sbatch
     #!/bin/bash
@@ -439,7 +440,7 @@ python runPytorch.py
     ./mm_optimization
 
   
-#ตรวจสอบผลลัพธ์
+ตรวจสอบผลลัพธ์
 
     cat gpujob.??.out
 
@@ -450,18 +451,17 @@ Running Jupyter on Slurm GPU Nodes
 
   
 
-
-### Singularity
-#ใช้งาน (รันโดย user)
+## ตัวอย่างการรัน Singularity
+ใช้งาน (รันโดย user)
 
     module load singularity
 
-#รัน
+รัน
 
     singularity exec --nv /opt/ohpc/pub/apps/singularity/cp2k_v9.1.0.sif mpirun --bind-to none -n 1 binder.sh cp2k.psmp -i H2O-dft-ls.NREP2.inp
 
   
-#เขียนไฟล์ Job script
+เขียนไฟล์ Job script
 
     vi runCP2K
     —-------------------------------------------------------------------
@@ -478,121 +478,33 @@ Running Jupyter on Slurm GPU Nodes
     —--------------------------------------------------------------------
 
   
-#รัน Job script
+รัน Job script
 
     sbatch runCP2K
 
   
 
-#High Performance Linpack (HPL)
-#HPL Benchmark
-
-#install openblas
-
-    yum install openblas-gnu9-ohpc
-
-  
-#login to user
-
-    su - test
-
-#download hpl
-
-    wget https://www.netlib.org/benchmark/hpl/hpl-2.3.tar.gz
-
-  
-#untar
-
-    tar xvf hpl-2.3.tar.gz
-
-#rename directory because have a hardcode in script use "hpl"
-
-    mv hpl-2.3 hpl
-
-#copy sample make file
-
-    cd hpl
-    cp setup/Make.Linux_PII_CBLAS .
-
-#edit make file
-
-    vi Make.Linux_PII_CBLAS
-    -----------------------------------------------------------
-    MPdir = /opt/ohpc/pub/mpi/openmpi4-gnu9/4.1.1
-    MPlib = $(MPdir)/lib/libmpi.so
-    LAlib = /opt/ohpc/pub/libs/gnu9/openblas/0.3.7/lib/libopenblas.so
-    CC = /opt/ohpc/pub/compiler/gcc/9.4.0/bin/gcc
-    LINKER = /opt/ohpc/pub/compiler/gcc/9.4.0/bin/gfortran
-    -----------------------------------------------------------
-
-
-#Make
-
-    make arch=Linux_PII_CBLAS
-
-#look the output
-
-    cd bin/Linux_PII_CBLAS
-    ls
-
-  
-
-#write job script and run
-
-    vi <job name>
-    ------------------------------------------------------
-    #!/bin/bash
-    #SBATCH -J test # Job name
-    #SBATCH -o job.%j.out # Name of stdout output file (%j expands to jobId)
-    #SBATCH -N 2 # Total number of nodes requested
-    #SBATCH -n 4 # Total number of mpi tasks requested
-    #SBATCH -t 00:30:00 # Run time (hh:mm:ss) - 1.5 hours
-    #Launch MPI-based executable
-    module load openblas
-    prun ./xhpl
-    ------------------------------------------------------
-
-    
-#Submit job for batch execution
-
-    sbatch <job name>
-
-  
-#view job status
-
-    squeue
- 
-#tuning HPL.dat
-
-    N = sqrt(0.75 * No. Of machines * Minimum memory on any machine/8)
-    sqrt(0.75 * 2 * 3,000,000,000/8)
-    sqrt(0.75 * 2 * 3000000000/8)
-
-
-
-
-
-#gromacs
-#ใช้ตัวอย่างจากลิงค์นี้ 
+## gromacs
+ใช้ตัวอย่างจากลิงค์นี้ 
 https://catalog.ngc.nvidia.com/orgs/hpc/containers/gromacs
 
-#gromac on GPU
+gromac on GPU
 
     wget https://ftp.gromacs.org/pub/benchmarks/water_GMX50_bare.tar.gz
     tar xvf water_GMX50_bare.tar.gz
     cd ./water-cut1.0_GMX50_bare/1536
 
-#run
+run
 
     module load gromacs_gpu
     gmx grompp -f pme.mdp
     gmx mdrun -nt 8 -nb gpu -pin on -v -noconfout -nsteps 5000 -s -ntomp 10 topol.tpr
 
-#8 threads, fixed gpu id 7 
+8 threads, fixed gpu id 7 
 
     gmx mdrun -nt 8 -gpu_id 7 -v -noconfout -nsteps 5000 -s  topol.tpr
 
-#สร้างไฟล์ Job script
+สร้างไฟล์ Job script
 
     vi gromac-water.gpu
     --------------------------------------------------------------
