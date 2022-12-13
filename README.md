@@ -522,4 +522,5 @@ gromac on GPU
     gmx mdrun -nt $SLURM_CPUS_PER_TASK -v -noconfout -nsteps 5000 -s  topol.tpr
 
 รัน 
-sbatch gromac-water.gpu
+
+    sbatch gromac-water.gpu
