@@ -293,6 +293,7 @@ MPI Run
     mpirun -np 1 ./a.out
 
 Create hostfile (for openmpi) 
+
     nano hosts
 
   
