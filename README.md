@@ -117,7 +117,7 @@ Compute node Local disk
 - module swap ใช้กรณีที่โมดูลมีการ conflict กัน
 - module purge เลิกโหลดโมดูลทั้งหมด
 
-## ตัวอย่างการรัน Slurm
+## ตัวอย่างการรัน Slurm Serial
 Create file "list.R"
 
     sum(0:9)
@@ -339,10 +339,6 @@ Submit job for batch execution
     sbatch job.mpi
 
 
-
-
-
-
 รายละเอียด slurm เพิ่มเติม [https://thaisc.io/คู่มือผู้ใช้งาน/](https://thaisc.io/%E0%B8%84%E0%B8%B9%E0%B9%88%E0%B8%A1%E0%B8%B7%E0%B8%AD%E0%B8%9C%E0%B8%B9%E0%B9%89%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%87%E0%B8%B2%E0%B8%99/)
 
 
@@ -419,19 +415,14 @@ submit slurm
 
 ## Jupyter notebook
 เข้าใช้งานบน web browser ระบุ URL: [http://10.110.0.11:8000](http://10.110.0.11:8000/) แล้ว login เข้าระบบ
+
+![enter image description here](https://github.com/somphop26/CMU-Erawan-User/blob/main/imp/Screenshot%20from%202022-12-13%2021-48-37.png?raw=true)
+
+
 คลิก + > เลือก Notebook
-#ดาวน์โหลดไฟล์ซอร์สโค้ดสำหรับทดสอบ
 
-    wget [https://gist.githubusercontent.com/leimao/bea971e07c98ce669940111b48a4cd7b/raw/f55b4dbf6c51df6b3604f2b598643f9672251f7b/mm_optimization.cu](https://gist.githubusercontent.com/leimao/bea971e07c98ce669940111b48a4cd7b/raw/f55b4dbf6c51df6b3604f2b598643f9672251f7b/mm_optimization.cu)
+![enter image description here](https://github.com/somphop26/CMU-Erawan-User/blob/main/imp/jupyter.png?raw=true)
 
-  
-
-ทำการคอมไพล์ซอฟต์แวร์
-
-    module load nvhpc
-    nvcc mm_optimization.cu -o mm_optimization
-
-  
 
 โหลด slurm-magic ก่อนใช้งานคำสั่ง slurm
 
@@ -456,6 +447,8 @@ Submit งานใช้ โดยใช้คำสั่ง %%sbatch แล�
 ตรวจสอบผลลัพธ์
 
     cat gpujob.??.out
+
+![enter image description here](https://github.com/somphop26/CMU-Erawan-User/blob/main/imp/jupyter03.png?raw=true)
 
   
 
