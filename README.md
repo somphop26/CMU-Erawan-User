@@ -294,8 +294,8 @@ MPI Run
 
 Create hostfile (for openmpi) 
 
-nano hosts
-
+    nano hosts
+    -------------------
     compute0 slots=128
     compute1 slots=128
     compute2 slots=128
@@ -362,7 +362,6 @@ Submit job for batch execution
     date
     ./mm_optimization
     date    
-    --------------------------------------------------------------
 
 รัน
 
@@ -386,7 +385,6 @@ source [https://wandb.ai/wandb/common-ml-errors/reports/How-To-Use-GPU-with-PyTo
     X_train = torch.FloatTensor([0., 1., 2.])
     X_train = X_train.cuda()
     print(X_train)
-    --------------------------------------------
     
 ทดลองรันสคริปต์
 python runPytorch.py
@@ -403,7 +401,6 @@ python runPytorch.py
     #SBATCH -N 1 # Total number of nodes requested
        
     python runPytorch.py
-    -------------------------------------------------------
 
 submit slurm
 
@@ -482,7 +479,6 @@ Running Jupyter on Slurm GPU Nodes
     #CUDA matrix multiplication
     
     singularity exec --nv /opt/ohpc/pub/apps/singularity/**cp2k**_v9.1.0**.sif** mpirun -n 1 binder.sh cp2k.psmp -i /home/cmu/cp2k/H2O-dft-ls.NREP2.inp
-    —--------------------------------------------------------------------
 
   
 รัน Job script
@@ -523,4 +519,3 @@ run
     
     module load gromacs-gpu
     gmx mdrun  -v -noconfout -nsteps 5000 -s  topol.tpr
-    --------------------------------------------------------------
