@@ -465,7 +465,7 @@ Running Jupyter on Slurm GPU Nodes
 
     module load singularity
 
-รัน
+ทดลองรันที่เครื่อง compute
 
     singularity exec --nv /opt/ohpc/pub/apps/singularity/cp2k_v9.1.0.sif mpirun --bind-to none -n 1 binder.sh cp2k.psmp -i H2O-dft-ls.NREP2.inp
 
