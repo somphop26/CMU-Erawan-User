@@ -299,7 +299,7 @@ Run
 
 MPI Run
 
-    mpirun -np 1 ./a.out
+    mpirun -np 2 ./a.out
 
 Create hostfile (for openmpi) 
 
