@@ -33,49 +33,49 @@ Compute node Local disk
 /scratch.local
  
 ### List of application software
-2.1 Python 3.6.8
-2.2 TensorFlow 2.6.2
-2.3 Anaconda 3-2022.05
-2.4 Keras 2.6.0
-2.5 Pytorch 1.10.2+cu113
-2.6 openCV 3.4.6
-2.7 R program 4.2.2
-2.8 Transformers 4.18.0
-2.9 AMPL 20221023
-2.10 C language 9.4.0 , 8.5.0
-2.11 Clara Train SDK 4.1
-2.12 CUDA Toolkit 11.8
-2.13 CuDNN 8.7
-2.14 GCC 9.4.0 , 8.5.0
-2.15 GNU C++ 9.4.0 , 8.5.0
-2.16 Matplotlib 3.0.3
-2.17 NumPy 1.19.5 , 1.14.3
-2.18 Open MPI 4.1.1 (gcc) , 4.1.4 (intel)
-2.19 pandas 0.25.3
-2.20 PGI Compiler (NVHPC-2022) 22.11
-2.21 Ray 2.1.0
-2.22 Julia 1.8.3
-2.23 Mkl (bundle with Intel One API) 2022.2.1
+- 2.1 Python 3.6.8
+- 2.2 TensorFlow 2.6.2
+- 2.3 Anaconda 3-2022.05
+- 2.4 Keras 2.6.0
+- 2.5 Pytorch 1.10.2+cu113
+- 2.6 openCV 3.4.6
+- 2.7 R program 4.2.2
+- 2.8 Transformers 4.18.0
+- 2.9 AMPL 20221023
+- 2.10 C language 9.4.0 , 8.5.0
+- 2.11 Clara Train SDK 4.1
+- 2.12 CUDA Toolkit 11.8
+- 2.13 CuDNN 8.7
+- 2.14 GCC 9.4.0 , 8.5.0
+- 2.15 GNU C++ 9.4.0 , 8.5.0
+- 2.16 Matplotlib 3.0.3
+- 2.17 NumPy 1.19.5 , 1.14.3
+- 2.18 Open MPI 4.1.1 (gcc) , 4.1.4 (intel)
+- 2.19 pandas 0.25.3
+- 2.20 PGI Compiler (NVHPC-2022) 22.11
+- 2.21 Ray 2.1.0
+- 2.22 Julia 1.8.3
+- 2.23 Mkl (bundle with Intel One API) 2022.2.1
  
-3.1 Jupyter notebook 1.13.5
-3.2 Gurobi 10.0
-3.3 GROMACS 2019.6
-3.4 BLAST 2.13.0
-3.5 LAMMPS 20190807
-3.6 LINGO 19
-3.7 Quantum Espresso 6.8
-3.8 Singularity 3.7.1-5.1.ohpc.2.1
-3.9 ABINIT 9.6.2
-3.10 CP2K
-3.11 DL_POLY 1.10-12
-3.12 FreeSurfer 7.3.2
-3.13 NAMD 2.14
-3.14 NWChem 7.0.2
-3.15 OpenFOAM 10
-3.16 ORCA 5.0.3
-3.17 SIESTA 4.1.5
-3.18 WRF 4.4.1
-3.19 WRF-Chem 4.4.1
+- 3.1 Jupyter notebook 1.13.5
+- 3.2 Gurobi 10.0
+- 3.3 GROMACS 2019.6
+- 3.4 BLAST 2.13.0
+- 3.5 LAMMPS 20190807
+- 3.6 LINGO 19
+- 3.7 Quantum Espresso 6.8
+- 3.8 Singularity 3.7.1-5.1.ohpc.2.1
+- 3.9 ABINIT 9.6.2
+- 3.10 CP2K
+- 3.11 DL_POLY 1.10-12
+- 3.12 FreeSurfer 7.3.2
+- 3.13 NAMD 2.14
+- 3.14 NWChem 7.0.2
+- 3.15 OpenFOAM 10
+- 3.16 ORCA 5.0.3
+- 3.17 SIESTA 4.1.5
+- 3.18 WRF 4.4.1
+- 3.19 WRF-Chem 4.4.1
   
 #Share space for application data
 #NCBI blast database
