@@ -113,11 +113,11 @@ Compute node Local disk
 - WRF-Chem ใช้โมดูล intel
 - MKL ใช้โมดูล intel
 
-## กลุ่ม application ที่ต้องสั่ง source
+## กลุ่ม Application software ที่ต้องสั่ง source
 OpenFoam
 
 
-## กลุ่ม application ที่ต้องรันผ่าน singularity
+## กลุ่ม Application software ที่ต้องรันผ่าน singularity
 - CP2K
 - Clara Train SDK
 
