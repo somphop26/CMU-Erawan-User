@@ -527,7 +527,7 @@ Running Jupyter on Slurm GPU Nodes
 
   
 
-## gromacs
+## Gromacs Example
 ใช้ตัวอย่างจากลิงค์นี้ 
 https://catalog.ngc.nvidia.com/orgs/hpc/containers/gromacs
 
@@ -558,5 +558,37 @@ gromac on GPU
 รัน 
 
     sbatch gromac-water.gpu
+
+
+## OpenFoam
+
+ใช้ enviroment
+
+    source /opt/ohpc/pub/apps/openfoam/OpenFOAM-10/etc/bashrc
+
+คัดลอกสคริปต์ตัวอย่าง
+
+    cp -r /opt/ohpc/pub/apps/openfoam/OpenFOAM-10/tutorials/incompressible/icoFoam/cavity ~/openfoam
+
+สร้างไฟล์ job script
+
+    vi slurm-openfoam.sh 
+    ----------------------------------------------------------------------------
+    #!/bin/bash
+    #SBATCH -J test # Job name
+    #SBATCH -o job.%j.out # Name of stdout output file (%j expands to jobId)
+    #SBATCH -N 2 # Total number of nodes requested
+    #SBATCH -n 16 # Total number of mpi tasks requested
+    #SBATCH -t 01:30:00 # Run time (hh:mm:ss) - 1.5 hours
+
+    ~/openfoam/Allrun
+    cd ~/openfoam/cavity/
+    blockMesh
+    icoFoam
+
+
+รัน
+
+    sbatch slurm-openfoam.sh
 
 
