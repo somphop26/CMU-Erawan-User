@@ -90,6 +90,38 @@ Compute node Local disk
 -   refseq_rna
 -   swissprot
 
+
+## กลุ่ม Application software ที่ต้อง โหลด module 
+| Application software | Module name|
+|--|--|
+| abinit | abinit |
+| ampl  | ampl | 
+| anaconda  | anaconda3 | 
+| gromacs | gromacs_gpu |   
+| gurobi  | gurobi |  
+| julia  | julia | 
+| lingo  | lingo | 
+| namd  | namd | 
+| orca  | orca |
+| siesta  | siesta| 
+| singularity | singularity |
+| PGI Compiler | nvhpc |
+
+
+## กลุ่ม Application software ที่ต้องโหลด module อื่นที่เกี่ยวข้อง
+- WRF ใช้ module intel
+- WRF-Chem ใช้ module intel
+- MKL ใช้ module intel
+
+## กลุ่ม application ที่ต้องสั่ง source
+openfoam
+
+
+## กลุ่ม application ที่ต้องรันผ่าน singularity
+- CP2K
+- Clara Train SDK
+
+
 ## วิธีการรีโมท
 เปิด PowerShell บน Windows จากนั้นพิมพ์คำสั่งด้านล่าง
 
