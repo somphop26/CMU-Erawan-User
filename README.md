@@ -394,6 +394,8 @@ Submit job for batch execution
     #SBATCH -o gpujob.%j.out # Name of stdout output file (%j expands to jobId)
     #SBATCH -J gputest # Job name
     #SBATCH -N 1 # Total number of nodes requested
+    #SBATCH -t 01:00:00 # Run time (hh:mm:ss) - 1.5 hours
+
     
     #CUDA matrix multiplication
     date
@@ -556,3 +558,5 @@ gromac on GPU
 รัน 
 
     sbatch gromac-water.gpu
+
+
