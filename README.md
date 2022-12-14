@@ -148,7 +148,7 @@ Download : https://filezilla-project.org/download.php?platform=win64
 - Password :  
 - Port : 22
 
-![enter image description here](https://github.com/somphop26/CMU-Erawan-User/blob/main/imp/Screenshot%20from%202022-12-14%2023-10-36.png?raw=true)
+![enter image description here](https://github.com/somphop26/CMU-Erawan-User/blob/main/imp/Screenshot%20from%202022-12-14%2023-18-32.png?raw=true)
 
 
 ## การใช้งาน module environment
