@@ -114,7 +114,7 @@ Compute node Local disk
 - MKL ใช้โมดูล intel
 
 ## กลุ่ม application ที่ต้องสั่ง source
-openfoam
+OpenFoam
 
 
 ## กลุ่ม application ที่ต้องรันผ่าน singularity
