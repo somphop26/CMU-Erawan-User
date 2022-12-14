@@ -91,7 +91,7 @@ Compute node Local disk
 -   swissprot
 
 
-## กลุ่ม Application software ที่ต้อง โหลด module 
+## กลุ่ม Application software ที่ต้องโหลด module 
 | Application software | Module name|
 |--|--|
 | abinit | abinit |
@@ -109,9 +109,9 @@ Compute node Local disk
 
 
 ## กลุ่ม Application software ที่ต้องโหลด module อื่นที่เกี่ยวข้อง
-- WRF ใช้ module intel
-- WRF-Chem ใช้ module intel
-- MKL ใช้ module intel
+- WRF ใช้โมดูล intel
+- WRF-Chem ใช้โมดูล intel
+- MKL ใช้โมดูล intel
 
 ## กลุ่ม application ที่ต้องสั่ง source
 openfoam
