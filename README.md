@@ -358,7 +358,7 @@ Submit job for batch execution
     --------------------------------------------------------------
     #!/bin/bash
     #SBATCH --gpus=2 # total number of GPUs
-    #SBATCH -p gpu # specific partition (compute, memory, gpu)
+    #SBATCH -p short # specific partition (compute, memory, gpu)
     #SBATCH -o gpujob.%j.out # Name of stdout output file (%j expands to jobId)
     #SBATCH -J gputest # Job name
     #SBATCH -N 1 # Total number of nodes requested
@@ -375,7 +375,7 @@ Submit job for batch execution
 
 ตรวจสอบผลลัพธ์
 
-    cat gpujob.??.out
+    cat gpujob.<jobid>.out
 
 
 ## Run python in slurm
@@ -403,7 +403,7 @@ source [https://wandb.ai/wandb/common-ml-errors/reports/How-To-Use-GPU-with-PyTo
     ----------------------------------------------
     #!/bin/bash
     #SBATCH --gpus=1 # total number of GPUs
-    #SBATCH -p gpu # specific partition (compute, memory, gpu)
+    #SBATCH -p short # specific partition (compute, memory, gpu)
     #SBATCH -o testpytorch.%j.out # Name of stdout output file (%j expands to jobId)
     #SBATCH -J testpytorch # Job name
     #SBATCH -N 1 # Total number of nodes requested
@@ -476,7 +476,7 @@ Running Jupyter on Slurm GPU Nodes
     —-------------------------------------------------------------------
     #!/bin/bash
     #SBATCH --gpus=1 # total number of GPUs
-    #SBATCH -p gpu # specific partition (compute, memory, gpu)
+    #SBATCH -p short # specific partition (compute, memory, gpu)
     #SBATCH -o cp2k.%j.out # Name of stdout output file (%j expands to jobId)
     #SBATCH -J cp2kgpu # Job name
     #SBATCH -N 1 # Total number of nodes requested
@@ -514,7 +514,7 @@ gromac on GPU
     --------------------------------------------------------------
     #!/bin/bash
     #SBATCH --gpus=1              # total number of GPUs
-    #SBATCH -p gpu                # specific partition (compute, memory, gpu)
+    #SBATCH -p short                # specific partition (compute, memory, gpu)
     #SBATCH -o gromacs.%j.out     # Name of stdout output file (%j expands to jobId)
     #SBATCH --cpus-per-task=8
     
