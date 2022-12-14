@@ -560,7 +560,7 @@ gromac on GPU
     sbatch gromac-water.gpu
 
 
-## OpenFoam
+## OpenFoam Example
 
 ใช้ enviroment
 
