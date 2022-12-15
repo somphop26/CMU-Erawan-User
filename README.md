@@ -110,8 +110,8 @@ Compute node Local disk
 
 ## กลุ่ม Application software ที่ต้องโหลด module อื่นที่เกี่ยวข้อง
 - MKL ใช้โมดูล intel
-- WRF ใช้โมดูล intel
-- WRF-Chem ใช้โมดูล intel
+- WRF ใช้โมดูล intel, netcdf
+- WRF-Chem ใช้โมดูล intel, netcdf
 
 ตำแหน่งไฟล์ WRF
 
