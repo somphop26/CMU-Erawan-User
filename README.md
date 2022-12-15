@@ -369,11 +369,11 @@ Examine contents (and edit to set desired job sizing characteristics)
 Edit file job script "job.mpi"
 
     #!/bin/bash
-    #SBATCH -J test # Job name
-    #SBATCH -o job.%j.out # Name of stdout output file (%j expands to jobId)
-    #SBATCH -N 1 # Total number of nodes requested
-    #SBATCH -n 8 # Total number of mpi tasks requested
-    #SBATCH -t 01:30:00 # Run time (hh:mm:ss) - 1.5 hours
+    #SBATCH -J test            # Job name
+    #SBATCH -o job.%j.out      # Name of stdout output file (%j expands to jobId)
+    #SBATCH -N 1               # Total number of nodes requested
+    #SBATCH -n 8               # Total number of mpi tasks requested
+    #SBATCH -t 01:30:00        # Run time (hh:mm:ss) - 1.5 hours
     
     # Launch MPI-based executable
     prun ./a.out
@@ -401,11 +401,11 @@ Submit job for batch execution
     vi gpu_job.sh
     --------------------------------------------------------------
     #!/bin/bash
-    #SBATCH --gpus=1 # total number of GPUs
-    #SBATCH -o gpujob.%j.out # Name of stdout output file (%j expands to jobId)
-    #SBATCH -J gputest # Job name
-    #SBATCH -N 1 # Total number of nodes requested
-    #SBATCH -t 01:00:00 # Run time (hh:mm:ss) - 1 hours
+    #SBATCH --gpus=1           # total number of GPUs
+    #SBATCH -o gpujob.%j.out   # Name of stdout output file (%j expands to jobId)
+    #SBATCH -J gputest         # Job name
+    #SBATCH -N 1               # Total number of nodes requested
+    #SBATCH -t 01:00:00        # Run time (hh:mm:ss) - 1 hours
 
     
     #CUDA matrix multiplication
@@ -447,11 +447,11 @@ source [https://wandb.ai/wandb/common-ml-errors/reports/How-To-Use-GPU-with-PyTo
     vi slurm-pytorch
     ----------------------------------------------
     #!/bin/bash
-    #SBATCH --gpus=1 # total number of GPUs
-    #SBATCH -p short # specific partition (compute, memory, gpu)
-    #SBATCH -o testpytorch.%j.out # Name of stdout output file (%j expands to jobId)
-    #SBATCH -J testpytorch # Job name
-    #SBATCH -N 1 # Total number of nodes requested
+    #SBATCH --gpus=1                # total number of GPUs
+    #SBATCH -p short                # specific partition (compute, memory, gpu)
+    #SBATCH -o testpytorch.%j.out   # Name of stdout output file (%j expands to jobId)
+    #SBATCH -J testpytorch          # Job name
+    #SBATCH -N 1                    # Total number of nodes requested
        
     python runPytorch.py
 
