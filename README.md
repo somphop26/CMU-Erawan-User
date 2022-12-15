@@ -570,7 +570,7 @@ gromac on GPU
     #SBATCH --gpus=1              # total number of GPUs
     #SBATCH -p short              # specific partition (compute, memory, gpu)
     #SBATCH -o gromacs.%j.out     # Name of stdout output file (%j expands to jobId)
-    #SBATCH **--cpus-per-task=8**
+    #SBATCH --cpus-per-task=8
     
     module load gromacs-gpu
     gmx mdrun -nt $SLURM_CPUS_PER_TASK -v -noconfout -nsteps 5000 -s  topol.tpr
