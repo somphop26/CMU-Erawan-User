@@ -114,12 +114,14 @@ Compute node Local disk
 - WRF-Chem ใช้โมดูล intel
 
 ตำแหน่งไฟล์ WRF
+
     /opt/ohpc/pub/apps/WRF/intel/
 
 ## กลุ่ม Application software ที่ต้องสั่ง source
 OpenFoam
     
 คำสั่ง source
+
     source /opt/ohpc/pub/apps/openfoam/OpenFOAM-10/etc/bashrc
 
 
