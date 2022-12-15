@@ -109,12 +109,19 @@ Compute node Local disk
 
 
 ## กลุ่ม Application software ที่ต้องโหลด module อื่นที่เกี่ยวข้อง
+- MKL ใช้โมดูล intel
 - WRF ใช้โมดูล intel
 - WRF-Chem ใช้โมดูล intel
-- MKL ใช้โมดูล intel
+
+ตำแหน่งไฟล์ WRF
+    /opt/ohpc/pub/apps/WRF/intel/
 
 ## กลุ่ม Application software ที่ต้องสั่ง source
 OpenFoam
+    
+คำสั่ง source
+    source /opt/ohpc/pub/apps/openfoam/OpenFOAM-10/etc/bashrc
+
 
 
 ## กลุ่ม Application software ที่ต้องรันผ่าน singularity
