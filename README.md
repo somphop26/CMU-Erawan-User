@@ -106,6 +106,7 @@ Compute node Local disk
 | siesta  | siesta| 
 | singularity | singularity |
 | PGI Compiler | nvhpc |
+| dl_poly | dl_poly_mpi |
 
 
 ## กลุ่ม Application software ที่ต้องโหลด module อื่นที่เกี่ยวข้อง
