@@ -107,10 +107,9 @@ Compute node Local disk
 | singularity | singularity |
 | PGI Compiler | nvhpc |
 | dl_poly | dl_poly_mpi |
-
+| lammps | lammps |
 
 ## กลุ่ม Application software ที่ต้องโหลด module อื่นที่เกี่ยวข้อง
-- lammps ใช้โมดูล intel
 - MKL ใช้โมดูล intel
 - WRF ใช้โมดูล intel, netcdf
 - WRF-Chem ใช้โมดูล intel, netcdf
