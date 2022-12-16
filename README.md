@@ -110,6 +110,7 @@ Compute node Local disk
 
 
 ## กลุ่ม Application software ที่ต้องโหลด module อื่นที่เกี่ยวข้อง
+- lammps ใช้โมดูล intel
 - MKL ใช้โมดูล intel
 - WRF ใช้โมดูล intel, netcdf
 - WRF-Chem ใช้โมดูล intel, netcdf
