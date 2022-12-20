@@ -640,21 +640,21 @@ gromac on GPU
 https://nero-docs.stanford.edu/jupyter-slurm.html
 
 สร้างสคริปต์ jupyter.job
-----------------------------------------------------------------
-#!/bin/bash
-#SBATCH --job-name=jupyter
-#SBATCH --gpus=1
-#SBATCH --time=02:00:00
- 
-source /home/${USER}/.bashrc
-conda activate [enviroment name]
-cat /etc/hosts
-jupyter lab --ip=0.0.0.0 --port=8888
 
-----------------------------------------------------------------
+    #!/bin/bash
+    #SBATCH --job-name=jupyter
+    #SBATCH --gpus=1
+    #SBATCH --time=02:00:00
+ 
+    source /home/${USER}/.bashrc
+    conda activate [enviroment name]
+    cat /etc/hosts
+    jupyter lab --ip=0.0.0.0 --port=8888
+
 ** พอร์ต 8888 คือกำหนดว่าให้ jupyterlab รันที่พอร์ตไหน ให้เปลี่ยนไม่ให้ซ้ำ ตั้งสูง ๆ ไว้เพราะพอร์ตหมายเลขน้อย ๆ อาจจะไปชนกับ service อื่น ๆ โดยเฉพาะที่ต่ำกว่า 1024 
 
 submit
+
     sbatch jupyter.job
 
 เมื่อ Job รัน (R) แล้ว  ให้ดู output ว่าไปรันที่เครื่องไหน
