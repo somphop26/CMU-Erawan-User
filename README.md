@@ -2,12 +2,16 @@
 # Erawan Cluster
 ## Hardware Spec 
 1 Scheduler node
+
 3 Compute with 8 GPU Nvidia A100 (128 Cores, 2TB)
+
 Storage
+
 -   Archive 288TB (Usable)
 -   Parallel File System (wekaio) 500TB
 
 Network
+
 -   25Gbps
 -   200Gbps Infiniband
 
