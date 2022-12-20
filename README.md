@@ -154,6 +154,7 @@ OpenFoam
     scp C:\temp\test.txt user@10.110.0.11:/home/user/
 
 หรือใช้โปรแกรม Filezilla
+
 Download : https://filezilla-project.org/download.php?platform=win64
 
 ระบุ 
