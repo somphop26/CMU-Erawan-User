@@ -477,7 +477,7 @@ submit slurm
 
 
 
-## Jupyter notebook
+## Submit slurm on Jupyter 
 
 เข้าใช้งานบน web browser ระบุ URL: [http://10.110.0.11:8000](http://10.110.0.11:8000/) หรือ [http://erawan.cmu.ac.th:8000](http://erawan.cmu.ac.th:8000) แล้ว login เข้าระบบ
 
@@ -617,5 +617,67 @@ gromac on GPU
 รัน
 
     sbatch slurm-openfoam.sh
+
+
+
+## Run Jupyter Notebook
+โหลดโมดูล anaconda3
+    module load anaconda3
+    
+สร้าง enviroment ของท่าน
+    conda create -n [enviroment name]
+    conda init bash 
+    conda config --set auto_activate_base False #กำหนด ให้ไม่ auto activate base environment
+    
+เช้าใช้งาน enviroment
+    conda activate [enviroment name]
+    
+ติดตั้ง jupyterlib ใน enviroment
+    conda install -c conda-forge jupyterlab
+
+
+### Running Jupyter on Slurm GPU Nodes
+https://nero-docs.stanford.edu/jupyter-slurm.html
+
+สร้างสคริปต์ jupyter.job
+----------------------------------------------------------------
+#!/bin/bash
+#SBATCH --job-name=jupyter
+#SBATCH --gpus=1
+#SBATCH --time=02:00:00
+ 
+source /home/${USER}/.bashrc
+conda activate [enviroment name]
+cat /etc/hosts
+jupyter lab --ip=0.0.0.0 --port=8888
+
+----------------------------------------------------------------
+** พอร์ต 8888 คือกำหนดว่าให้ jupyterlab รันที่พอร์ตไหน ให้เปลี่ยนไม่ให้ซ้ำ ตั้งสูง ๆ ไว้เพราะพอร์ตหมายเลขน้อย ๆ อาจจะไปชนกับ service อื่น ๆ โดยเฉพาะที่ต่ำกว่า 1024 
+
+submit
+    sbatch jupyter.job
+
+เมื่อ Job รัน (R) แล้ว  ให้ดู output ว่าไปรันที่เครื่องไหน
+
+ทำ ssh tunnel ไปยังพอร์ตที่เรากำหนดให้ Jupyter ตอน submit job
+
+    ssh -L 9999:10.98.4.XX:8888 cmu@erawan.cmu.ac.th
+
+ข้างบนเป็นการกำหนดให้ Local port 9999 เชื่อมไปยังเครื่อง 10.98.4.XX:8888
+*อ่านเพิ่มเติม https://www.tunnelsup.com/how-to-create-ssh-tunnels
+
+เปิดหน้าเว็บไปที่ http://localhost:9999 เข้าไปดู token ใน output slurm
+
+
+
+
+
+
+
+
+
+
+
+
 
 
