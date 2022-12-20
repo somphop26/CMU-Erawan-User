@@ -331,6 +331,7 @@ source https://slurm.schedmd.com/squeue.html#SECTION_JOB-STATE-CODES
 
 ## ตัวอย่างการรัน MPI
 Run a Test Job
+
 create mpi programming "myrank.c"
    
 
