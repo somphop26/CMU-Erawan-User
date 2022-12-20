@@ -499,7 +499,7 @@ Submit งานใช้ โดยใช้คำสั่ง %%sbatch แล�
 
     %%sbatch
     #!/bin/bash
-    #SBATCH <pre><b>--gpus=1</b></pre>        # total number of GPUs
+    #SBATCH `**`--gpus=1`**`        # total number of GPUs
     #SBATCH -p normal       # specific partition (compute, memory, gpu)
     #SBATCH -o jpjob.%j.out # Name of stdout output file (%j expands to jobId)
     #SBATCH -J jptest       # Job name
