@@ -622,17 +622,21 @@ gromac on GPU
 
 ## Run Jupyter Notebook
 โหลดโมดูล anaconda3
+
     module load anaconda3
     
 สร้าง enviroment ของท่าน
+
     conda create -n [enviroment name]
     conda init bash 
     conda config --set auto_activate_base False #กำหนด ให้ไม่ auto activate base environment
     
 เช้าใช้งาน enviroment
+
     conda activate [enviroment name]
     
 ติดตั้ง jupyterlib ใน enviroment
+
     conda install -c conda-forge jupyterlab
 
 
@@ -664,6 +668,7 @@ submit
     ssh -L 9999:10.98.4.XX:8888 cmu@erawan.cmu.ac.th
 
 ข้างบนเป็นการกำหนดให้ Local port 9999 เชื่อมไปยังเครื่อง 10.98.4.XX:8888
+
 *อ่านเพิ่มเติม https://www.tunnelsup.com/how-to-create-ssh-tunnels
 
 เปิดหน้าเว็บไปที่ http://localhost:9999 เข้าไปดู token ใน output slurm
