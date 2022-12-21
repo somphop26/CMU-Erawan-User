@@ -106,7 +106,7 @@ Submit Job script ไปต่อคิวที่ slurm สำหรับร�
     something <- c(1,4,letters[2])
     length(something)
 
-สร้างไฟล์ Job script ตั้งชื่อ "myscriptR.job"
+สร้างไฟล์ Job script ตั้งชื่อ "myscriptR.job" โดยเนื้อหาจะระบุให้ใช้แค่ 1 node 1 core ตามตัวแปรด้านล่าง
 
     #!/bin/bash
     #SBATCH --job-name=mytest        # create a short name for your job
@@ -232,10 +232,8 @@ source https://slurm.schedmd.com/squeue.html#SECTION_JOB-STATE-CODES
 
 ---
 
-ยกเลิกงาน
 
-    scancel <jobid>
-
+#### ตัวอย่างการรันงานแบบ Multithreaded Jobs
 
 
 
