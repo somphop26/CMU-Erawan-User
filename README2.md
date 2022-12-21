@@ -260,14 +260,92 @@ source https://slurm.schedmd.com/squeue.html#SECTION_JOB-STATE-CODES
 
     sbatch gromac-water.gpu
 
-** **สำคัญ** 
+*** **สำคัญ** ***
 
 ในคำสั่งที่ท่านใช้รัน **ห้ามกำหนด thread ในคำสั่ง** เช่น "gmx mdrun -ntomp **64** -v -noconfout -nsteps 5000 -s  1536/topol.tpr" **ให้กำหนดผ่านตัวแปร Slurm เท่านั้น** เช่น "gmx mdrun -ntomp **$SLURM_CPUS_PER_TASK** -v -noconfout -nsteps 5000 -s  1536/topol.tpr" เพื่อให้ slurm รู้ว่ามีการใช้ thread ไปเท่าไหร่ จะได้จัดสรรงานให้พอดีกับระบบจะได้ไม่เกิด context switching ซึ่งจะส่งผลให้ประสิทธิภาพของระบบโดยรวมไม่ดี
 
 
 
 
+#### ตัวอย่างการรันงานแบบ MPI Jobs
 
+สร้างไฟล์ mpi programming ตั้งชื่อ "myrank.c"
+   
+    #include <stdio.h>
+    #include "mpi.h"
+    int main(int argc,char *argv[]) {
+             int size,len,rank;
+             char procname[100];
+             MPI_Init(&argc,&argv);
+             MPI_Comm_size(MPI_COMM_WORLD,&size);
+             MPI_Comm_rank(MPI_COMM_WORLD,&rank);
+             MPI_Get_processor_name(procname,&len);
+             printf("I'm rank = %d of %d process on %s\n",rank,size,procname);
+             MPI_Finalize();
+             return 0;
+    }
+
+คอมไพล์โปรแกรม
+
+    mpicc myrank.c
+
+สร้างไฟล์ Job script ตั้งชื่อ "mpi.job"
+
+    #!/bin/bash
+    #SBATCH --job-name=mpi-job       # create a short name for your job
+    #SBATCH -p normal                # pritition name
+    #SBATCH --nodes=2                # node count
+    #SBATCH --ntasks=200             # number of tasks per node
+    #SBATCH --cpus-per-task=1        # cpu-cores per task (>1 if multi-threaded tasks)
+    #SBATCH --time=00:05:00          # total run time limit (HH:MM:SS)
+
+    module purge
+    module load intel
+    prun myprog.o
+
+รัน
+    
+    sbatch mpi.job
+
+จากเดิมที่รันด้วยมือ จะรันแบบนี้
+
+create file "hosts" (for openmpi)
+
+    compute0 slots=128
+    compute1 slots=128
+    compute2 slots=128
+
+mpirun with hostfile
+
+    mpirun -np 4 -hostfile hosts ./a.out
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------------------
+จากเดิมที่รันด้วยมือ จะรันแบบนี้
+file: hosts
+-------------------------------------
+compute0 slots=128
+compute1 slots=128
+compute2 slots=128
+------------------------------------
+
+# mpirun with hostfile 
+mpirun -np 200 -hostfile hosts ./a.out
 
 
 
@@ -528,49 +606,6 @@ OpenFoam
 
 
 
-## ตัวอย่างการรัน MPI
-Run a Test Job
-
-create mpi programming "myrank.c"
-   
-
-    #include <stdio.h>
-    #include "mpi.h"
-    int main(int argc,char *argv[]) {
-             int size,len,rank;
-             char procname[100];
-             MPI_Init(&argc,&argv);
-             MPI_Comm_size(MPI_COMM_WORLD,&size);
-             MPI_Comm_rank(MPI_COMM_WORLD,&rank);
-             MPI_Get_processor_name(procname,&len);
-             printf("I'm rank = %d of %d process on %s\n",rank,size,procname);
-             MPI_Finalize();
-             return 0;
-    }
-
-Compile
-
-    mpicc myrank.c
-
-Run
-
-    ./a.out
-
-MPI Run
-
-    mpirun -np 2 ./a.out
-
-Create hostfile (for openmpi) 
-
-    nano hosts
-    -------------------
-    compute0 slots=128
-    compute1 slots=128
-    compute2 slots=128
-
-mpirun with hostfile
-
-    mpirun -np 4 -hostfile hosts ./a.out
 
 
 
