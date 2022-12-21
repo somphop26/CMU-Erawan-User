@@ -40,7 +40,7 @@ Slurm เป็นซอฟต์แวร์ Job scheduler มีหน้า�
 
 ผู้ใช้จะต้องเขียนไฟล์ Job script ขึ้นมาเพื่อส่งงานไปรันที่ Slurm เท่านั้น **ห้ามรีโมทไปรันที่เครื่องโดยตรง** เพราะจะส่งผลให้ระบบมีประสิทธิภาพการทำงานโดยรวมที่ไม่ดี โดยไฟล์ Job script ท่านสามารถระบุความต้องการต่าง ๆ ได้ เช่น ระบุจำนวนทรัพยากรที่ต้องการ (CPU, GPU, RAM) ระบุระยะเวลาที่ใช้ในการรัน ระบุ Partition (Resource group) ที่ต้องการใช้งาน เป็นต้น
 
-### คำสั่งพื้นฐานสำหรับใช้งาน Slurm
+### คำสั่งพื้นฐานสำหรับใช้งาน Slurm มีดังนี้
 
 Submit Job script ไปต่อคิวที่ slurm สำหรับรอประมวลผล
 
@@ -79,7 +79,6 @@ Submit Job script ไปต่อคิวที่ slurm สำหรับร�
 | drain | สถานะเครื่องไม่พร้อมให้ใช้งานเนื่องจากเกิดปัญหาภายในระบบ |
 
 
-
 แสดงข้อมูลของแต่ละ Compute node
 
     scontrol show nodes
@@ -93,16 +92,174 @@ Submit Job script ไปต่อคิวที่ slurm สำหรับร�
     scontrol show partition
 
 
+### ตัวอย่างการรัน Slurm ในแบบต่าง ๆ
+
+#### ตัวอย่างการรันงานแบบ Serial Jobs
+
+สร้างไฟล์ R Script ตั้งชื่อ "myscript.R"
+
+    sum(0:9)
+    append(LETTERS[1:13],letters[14:26])
+    c(1,6,4,9)*2
+    something <- c(1,4,letters[2])
+    length(something)
+
+ทดสอบ R Script
+
+    Rscript myscript.R
+
+สร้างไฟล์ Job script ตั้งชื่อ "myscriptR.job"
+
+    #!/bin/bash
+    #SBATCH --job-name=mytest        # create a short name for your job
+    #SBATCH --nodes=1                # node count
+    #SBATCH --ntasks=1               # total number of tasks across all nodes
+    #SBATCH --cpus-per-task=1        # cpu-cores per task (>1 if multi-threaded tasks)
+    #SBATCH --time=00:01:00          # total run time limit (HH:MM:SS)
+
+    module purge
+    Rscript myscript.R
+
+รัน
+
+    sbatch myscriptR.job
+
+แสดงสถานะ
+
+    squeue
+
+![enter image description here](https://raw.githubusercontent.com/somphop26/CMU-Erawan-User/main/imp/Screenshot%20from%202022-12-13%2022-16-00.png)
+
+ยกเลิกงาน
+
+    scancel <jobid>
+
+---
+**JOB STATE CODES**
+
+Jobs typically pass through several states in the course of their execution. The typical states are PENDING, RUNNING, SUSPENDED, COMPLETING, and COMPLETED. An explanation of each state follows.
+
+**BF BOOT_FAIL**
+
+Job terminated due to launch failure, typically due to a hardware failure (e.g. unable to boot the node or block and the job can not be requeued).
+
+**CA CANCELLED**
+
+Job was explicitly cancelled by the user or system administrator. The job may or may not have been initiated.
+
+**CD COMPLETED**
+
+Job has terminated all processes on all nodes with an exit code of zero.
+
+**CF CONFIGURING**
+
+Job has been allocated resources, but are waiting for them to become ready for use (e.g. booting).
+
+**CG COMPLETING**
+
+Job is in the process of completing. Some processes on some nodes may still be active.
+
+**DL DEADLINE**
+
+Job terminated on deadline.
+
+**F FAILED**
+
+Job terminated with non-zero exit code or other failure condition.
+
+**NF NODE_FAIL**
+
+Job terminated due to failure of one or more allocated nodes.
+
+**OOM OUT_OF_MEMORY**
+
+Job experienced out of memory error.
+
+**PD PENDING**
+
+Job is awaiting resource allocation.
+
+**PR PREEMPTED**
+
+Job terminated due to preemption.
+
+**R RUNNING**
+
+Job currently has an allocation.
+
+**RD RESV_DEL_HOLD**
+
+Job is being held after requested reservation was deleted.
+
+**RF REQUEUE_FED**
+
+Job is being requeued by a federation.
+
+**RH REQUEUE_HOLD**
+
+Held job is being requeued.
+
+**RQ REQUEUED**
+
+Completing job is being requeued.
+
+**RS RESIZING**
+
+Job is about to change size.
+
+**RV REVOKED**
+
+Sibling was removed from cluster due to other cluster starting the job.
+
+**SI SIGNALING**
+
+Job is being signaled.
+
+**SE SPECIAL_EXIT**
+
+The job was requeued in a special state. This state can be set by users, typically in EpilogSlurmctld, if the job has terminated with a particular exit value.
+
+**SO STAGE_OUT**
+
+Job is staging out files.
+
+**ST STOPPED**
+
+Job has an allocation, but execution has been stopped with SIGSTOP signal. CPUS have been retained by this job.
+
+**S SUSPENDED**
+
+Job has an allocation, but execution has been suspended and CPUs have been released for other jobs.
+
+**TO TIMEOUT**
+
+Job terminated upon reaching its time limit.
+
+source https://slurm.schedmd.com/squeue.html#SECTION_JOB-STATE-CODES
+
+---
 
 
 
 
 
-sbatch คือคำสั่งสำหรับส่ง Job script ไปต่อคิวที่ slurm สำหรับรอประมวลผล 
 
 
 
-คำสั่งเบื้องต้นที่ใช้งานบ่อย มีดังนี้
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -345,158 +502,13 @@ OpenFoam
 - module swap ใช้กรณีที่โมดูลมีการ conflict กัน
 - module purge เลิกโหลดโมดูลทั้งหมด
 
-## ตัวอย่างการรัน Slurm Serial
-Create file "list.R"
 
-    sum(0:9)
-    append(LETTERS[1:13],letters[14:26])
-    c(1,6,4,9)*2
-    something <- c(1,4,letters[2])
-    length(something)
 
-Test R Script
 
-    Rscript list.R
 
 
-Create file Job script "test.job"
 
 
-    #!/bin/sh 
-    #SBATCH -p normal
-    #SBATCH -J mytest
-    #SBATCH -o job.%j.out
-    
-    Rscript list.R
-
-
-| พารามิเตอร์ | คำอธิบาย |
-|--|--|
-| #SBATCH -p **[partition name]** | ระบุพาร์ติชันที่ต้องการใช้งาน |
-| #SBATCH -J **[job name]** | ระบุชื่องาน |
-| #SBATCH -o **[output name]** | ระบุชื่อไฟล์ผลลัพธ์ |
-| #SBATCH -N **[number of node]** | ระบุจำนวนเครื่อง (nodes) ที่ต้องการใช้งาน |
-| #SBATCH -t **[time]** | ระบุระยะเวลาที่ใช้จำกัดในการรัน รูปแบบ ชั่วโมง:นาที:วินาที |
-| #SBATCH --gpus=**[number of GPU]** | ระบุจำนวน GPU ที่ใช้ |
-
-Run
-
-    sbatch test.job
-
-View status
-
-    squeue
-
-![enter image description here](https://raw.githubusercontent.com/somphop26/CMU-Erawan-User/main/imp/Screenshot%20from%202022-12-13%2022-16-00.png)
-
-Cancel job
-
-    scancel <jobid>
-
----
-**JOB STATE CODES**
-
-Jobs typically pass through several states in the course of their execution. The typical states are PENDING, RUNNING, SUSPENDED, COMPLETING, and COMPLETED. An explanation of each state follows.
-
-**BF BOOT_FAIL**
-
-Job terminated due to launch failure, typically due to a hardware failure (e.g. unable to boot the node or block and the job can not be requeued).
-
-**CA CANCELLED**
-
-Job was explicitly cancelled by the user or system administrator. The job may or may not have been initiated.
-
-**CD COMPLETED**
-
-Job has terminated all processes on all nodes with an exit code of zero.
-
-**CF CONFIGURING**
-
-Job has been allocated resources, but are waiting for them to become ready for use (e.g. booting).
-
-**CG COMPLETING**
-
-Job is in the process of completing. Some processes on some nodes may still be active.
-
-**DL DEADLINE**
-
-Job terminated on deadline.
-
-**F FAILED**
-
-Job terminated with non-zero exit code or other failure condition.
-
-**NF NODE_FAIL**
-
-Job terminated due to failure of one or more allocated nodes.
-
-**OOM OUT_OF_MEMORY**
-
-Job experienced out of memory error.
-
-**PD PENDING**
-
-Job is awaiting resource allocation.
-
-**PR PREEMPTED**
-
-Job terminated due to preemption.
-
-**R RUNNING**
-
-Job currently has an allocation.
-
-**RD RESV_DEL_HOLD**
-
-Job is being held after requested reservation was deleted.
-
-**RF REQUEUE_FED**
-
-Job is being requeued by a federation.
-
-**RH REQUEUE_HOLD**
-
-Held job is being requeued.
-
-**RQ REQUEUED**
-
-Completing job is being requeued.
-
-**RS RESIZING**
-
-Job is about to change size.
-
-**RV REVOKED**
-
-Sibling was removed from cluster due to other cluster starting the job.
-
-**SI SIGNALING**
-
-Job is being signaled.
-
-**SE SPECIAL_EXIT**
-
-The job was requeued in a special state. This state can be set by users, typically in EpilogSlurmctld, if the job has terminated with a particular exit value.
-
-**SO STAGE_OUT**
-
-Job is staging out files.
-
-**ST STOPPED**
-
-Job has an allocation, but execution has been stopped with SIGSTOP signal. CPUS have been retained by this job.
-
-**S SUSPENDED**
-
-Job has an allocation, but execution has been suspended and CPUs have been released for other jobs.
-
-**TO TIMEOUT**
-
-Job terminated upon reaching its time limit.
-
-source https://slurm.schedmd.com/squeue.html#SECTION_JOB-STATE-CODES
-
----
 
 ## ตัวอย่างการรัน MPI
 Run a Test Job
