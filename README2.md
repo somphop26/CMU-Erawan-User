@@ -260,9 +260,7 @@ source https://slurm.schedmd.com/squeue.html#SECTION_JOB-STATE-CODES
 
     sbatch gromac-water.gpu
 
-** อย่ากำหนดจำนวน thread ในคำสั่งแบบเวลารันเอง ให้กำหนดผ่านตัวแปร เพื่อให้ slurm รู้ว่ามีการใช้ thread ไปเท่าไหร่ จะได้จัดสรรงานให้พอดีกับระบบ 
-
-ในคำสั่งที่ท่านใช้รันห้ามกำหนด thread
+ในคำสั่งที่ท่านใช้รัน **ห้ามกำหนด thread ในคำสั่ง** เช่น "gmx mdrun -ntomp 64 -v -noconfout -nsteps 5000 -s  1536/topol.tpr" **ให้กำหนดผ่านตัวแปร Slurm เท่านั้น** เช่น "gmx mdrun -ntomp $SLURM_CPUS_PER_TASK -v -noconfout -nsteps 5000 -s  1536/topol.tpr" เพื่อให้ slurm รู้ว่ามีการใช้ thread ไปเท่าไหร่ จะได้จัดสรรงานให้พอดีกับระบบ 
 
 
 
