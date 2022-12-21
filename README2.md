@@ -106,7 +106,7 @@ Submit Job script ไปต่อคิวที่ slurm สำหรับร�
     something <- c(1,4,letters[2])
     length(something)
 
-สร้างไฟล์ Job script ตั้งชื่อ "myscriptR.job" โดยเนื้อหาจะระบุให้ใช้แค่ 1 node 1 core ตามตัวแปรด้านล่าง
+สร้างไฟล์ Job script ตั้งชื่อ "myscriptR.job" โดยเนื้อหาจะระบุให้ใช้ CPU ประมวลผลจำนวน 1 core
 
     #!/bin/bash
     #SBATCH --job-name=mytest        # create a short name for your job
@@ -235,8 +235,32 @@ source https://slurm.schedmd.com/squeue.html#SECTION_JOB-STATE-CODES
 
 #### ตัวอย่างการรันงานแบบ Multithreaded Jobs
 
+รีโมท ssh มายัง login node (ท่านต้อง Submit งานผ่าน Slurm เท่านั้น ห้ามรันงานที่ login node)
 
+ดาวน์โหลดไฟล์สำหรับทดสอบ
 
+    wget https://ftp.gromacs.org/pub/benchmarks/water_GMX50_bare.tar.gz
+    tar xvf water_GMX50_bare.tar.gz
+    cd ./water-cut1.0_GMX50_bare/
+
+สร้างไฟล์ Job script ตั้งชื่อ "gromac-water.gpu"
+
+    #!/bin/bash
+    #SBATCH --job-name=multithread   # create a short name for your job
+    #SBATCH --nodes=1                # node count
+    #SBATCH --ntasks=1               # total number of tasks across all nodes
+    #SBATCH --cpus-per-task=64       # cpu-cores per task (>1 if multi-threaded tasks)
+    #SBATCH --time=00:15:00          # maximum time needed (HH:MM:SS)
+    
+    module load gromacs_gpu
+    gmx mdrun -ntomp $SLURM_CPUS_PER_TASK -v -noconfout -nsteps 5000 -s  1536/topol.tpr
+    bwa mem -t $SLURM_CPUS_PER_TASK 
+
+รัน 
+
+    sbatch gromac-water.gpu
+
+** อย่ากำหนดจำนวน thread ในคำสั่งแบบเวลารันเอง ให้กำหนดผ่านตัวแปร เพื่อให้ slurm รู้ว่ามีการใช้ thread ไปเท่าไหร่ จะได้จัดสรรงานให้พอดีกับระบบ 
 
 
 
@@ -729,37 +753,6 @@ Running Jupyter on Slurm GPU Nodes
 
   
 
-## Gromacs Example
-ใช้ตัวอย่างจากลิงค์นี้ 
-https://catalog.ngc.nvidia.com/orgs/hpc/containers/gromacs
-
-gromac on GPU
-
-    wget https://ftp.gromacs.org/pub/benchmarks/water_GMX50_bare.tar.gz
-    tar xvf water_GMX50_bare.tar.gz
-    cd ./water-cut1.0_GMX50_bare/1536
-
-ทดลองรันที่เครื่อง
-
-    module load gromacs_gpu
-    gmx grompp -f pme.mdp
-
-สร้างไฟล์ Job script
-
-    vi gromac-water.gpu
-    --------------------------------------------------------------
-    #!/bin/bash
-    #SBATCH --gpus=1              # total number of GPUs
-    #SBATCH -p short              # specific partition (compute, memory, gpu)
-    #SBATCH -o gromacs.%j.out     # Name of stdout output file (%j expands to jobId)
-    #SBATCH --cpus-per-task=8
-    
-    module load gromacs-gpu
-    gmx mdrun -nt $SLURM_CPUS_PER_TASK -v -noconfout -nsteps 5000 -s  topol.tpr
-
-รัน 
-
-    sbatch gromac-water.gpu
 
 
 ## OpenFoam Example
