@@ -128,11 +128,6 @@ Submit Job script ไปต่อคิวที่ slurm สำหรับร�
 
 ![enter image description here](https://github.com/somphop26/CMU-Erawan-User/blob/main/imp/Screenshot%20from%202022-12-21%2017-18-46.png?raw=true)
 
-ยกเลิกงาน
-
-    scancel <jobid>
-
-
 **JOB STATE CODES (ST)**
 
 Jobs typically pass through several states in the course of their execution. The typical states are PENDING, RUNNING, SUSPENDED, COMPLETING, and COMPLETED. An explanation of each state follows.
@@ -237,6 +232,9 @@ source https://slurm.schedmd.com/squeue.html#SECTION_JOB-STATE-CODES
 
 ---
 
+ยกเลิกงาน
+
+    scancel <jobid>
 
 
 
