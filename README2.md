@@ -92,9 +92,11 @@ Submit Job script ไปต่อคิวที่ slurm สำหรับร�
     scontrol show partition
 
 
-### ตัวอย่างการรัน Slurm ในแบบต่าง ๆ
+### การรัน Slurm ในแบบต่าง ๆ
 
 #### ตัวอย่างการรันงานแบบ Serial Jobs
+
+รีโมท ssh มายัง login node (ท่านต้อง Submit งานผ่าน Slurm เท่านั้น ห้ามรันงานที่ login node)
 
 สร้างไฟล์ R Script ตั้งชื่อ "myscript.R"
 
@@ -103,10 +105,6 @@ Submit Job script ไปต่อคิวที่ slurm สำหรับร�
     c(1,6,4,9)*2
     something <- c(1,4,letters[2])
     length(something)
-
-ทดสอบ R Script
-
-    Rscript myscript.R
 
 สร้างไฟล์ Job script ตั้งชื่อ "myscriptR.job"
 
@@ -128,7 +126,7 @@ Submit Job script ไปต่อคิวที่ slurm สำหรับร�
 
     squeue
 
-![enter image description here](https://raw.githubusercontent.com/somphop26/CMU-Erawan-User/main/imp/Screenshot%20from%202022-12-13%2022-16-00.png)
+![enter image description here](https://github.com/somphop26/CMU-Erawan-User/blob/main/imp/Screenshot%20from%202022-12-21%2017-18-46.png?raw=true)
 
 ยกเลิกงาน
 
