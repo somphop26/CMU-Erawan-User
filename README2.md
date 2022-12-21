@@ -11,6 +11,8 @@
 
     ssh user@erawan.cmu.ac.th
 
+---
+
 ## วิธีการคัดลอกไฟล์
 
     scp /path/to/[ไฟล์ที่ต้องการคัดลอก] [username]@[IP Address or Domain name]:/path/to/[ตำแหน่งที่ต้องการวางไฟล์]
@@ -51,7 +53,6 @@ Network
 
 -   25Gbps
 -   200Gbps Infiniband
-
      
 ### Software
 -   OS: Rocky-8.7
@@ -178,7 +179,7 @@ OpenFoam
 - CP2K
 - Clara Train SDK
 
-
+---
 
 ## การใช้งาน module environment
 - module list เราโหลดอะไรอยู่บ้าง
@@ -189,7 +190,7 @@ OpenFoam
 - module swap ใช้กรณีที่โมดูลมีการ conflict กัน
 - module purge เลิกโหลดโมดูลทั้งหมด
 
-
+---
 
 ## วิธีการใช้งาน Slurm
 
