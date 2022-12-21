@@ -106,7 +106,7 @@ Submit Job script ไปต่อคิวที่ slurm สำหรับร�
     something <- c(1,4,letters[2])
     length(something)
 
-สร้างไฟล์ Job script ตั้งชื่อ "myscriptR.job" โดยเนื้อหาจะระบุให้ใช้ CPU ประมวลผลจำนวน 1 core
+สร้างไฟล์ Job script ตั้งชื่อ "myscriptR.job" โดยเนื้อหาจะระบุให้แบ่งงานจำนวน 1 tasks ใช้ CPU ประมวลผลจำนวน 1 core
 
     #!/bin/bash
     #SBATCH --job-name=mytest        # create a short name for your job
@@ -289,7 +289,7 @@ source https://slurm.schedmd.com/squeue.html#SECTION_JOB-STATE-CODES
 
     mpicc myrank.c
 
-สร้างไฟล์ Job script ตั้งชื่อ "mpi.job"
+สร้างไฟล์ Job script ตั้งชื่อ "mpi.job" โดยเนื้อหาจะระบุให้ใช้ 2 node แบ่ง tasks จำนวน 200 tasks และใช้ 1 core ต่อ 1 tasks
 
     #!/bin/bash
     #SBATCH --job-name=mpi-job       # create a short name for your job
@@ -307,7 +307,7 @@ source https://slurm.schedmd.com/squeue.html#SECTION_JOB-STATE-CODES
     
     sbatch mpi.job
 
-จากเดิมที่รันด้วยมือ จะรันแบบนี้
+**จากเดิมที่รันด้วยมือ จะรันแบบนี้**
 
 create file "hosts" (for openmpi)
 
@@ -321,38 +321,35 @@ mpirun with hostfile
 
 
 
+#### ตัวอย่างการรันงานแบบ GPU Jobs
 
+ดาวน์โหลดไฟล์ซอร์สโค้ดสำหรับทดสอบ
 
+    wget https://gist.githubusercontent.com/leimao/bea971e07c98ce669940111b48a4cd7b/raw/f55b4dbf6c51df6b3604f2b598643f9672251f7b/mm_optimization.cu
+    
+ทำการคอมไพล์ซอฟต์แวร์
 
+    module load nvhpc
+    nvcc mm_optimization.cu -o mm_optimization
 
+สร้างไฟล์ Job script ตั้งชื่อ "gpu.job" โดยเนื้อหาจะระบุตัวแปร "--gpus=1" เพิ่มขึ้นมาเพื่อกำหนดให้งานใช้ GPU จำนวน 1 การ์ด 
 
+    #!/bin/bash
+    #SBATCH --job-name=mnist         # create a short name for your job
+    #SBATCH --nodes=1                # node count
+    #SBATCH --ntasks=1               # total number of tasks across all nodes
+    #SBATCH --cpus-per-task=1        # cpu-cores per task (>1 if multi-threaded tasks)
+    #SBATCH --gpus=1                 # total number of GPUs
+    #SBATCH --time=01:00:00          # total run time limit (HH:MM:SS)
+   
+    #CUDA matrix multiplication
+    date
+    ./mm_optimization
+    date    
 
+รัน
 
-
-
-
-
-
-
-
--------------------------------------
-จากเดิมที่รันด้วยมือ จะรันแบบนี้
-file: hosts
--------------------------------------
-compute0 slots=128
-compute1 slots=128
-compute2 slots=128
-------------------------------------
-
-# mpirun with hostfile 
-mpirun -np 200 -hostfile hosts ./a.out
-
-
-
-
-
-
-
+    sbatch gpu.job
 
 
 
@@ -609,68 +606,8 @@ OpenFoam
 
 
 
-## ตัวอย่างการรัน Slurm Multi-thread
-Batch execution
-Copy example job script 
-
-    cp /opt/ohpc/pub/examples/slurm/job.mpi .
-
-Examine contents (and edit to set desired job sizing characteristics)
-Edit file job script "job.mpi"
-
-    #!/bin/bash
-    #SBATCH -J test            # Job name
-    #SBATCH -o job.%j.out      # Name of stdout output file (%j expands to jobId)
-    #SBATCH -N 1               # Total number of nodes requested
-    #SBATCH -n 8               # Total number of mpi tasks requested
-    #SBATCH -t 01:30:00        # Run time (hh:mm:ss) - 1.5 hours
-    
-    # Launch MPI-based executable
-    prun ./a.out
-
-Submit job for batch execution
-
-    sbatch job.mpi
 
 
-รายละเอียด slurm เพิ่มเติม [https://thaisc.io/คู่มือผู้ใช้งาน/](https://thaisc.io/%E0%B8%84%E0%B8%B9%E0%B9%88%E0%B8%A1%E0%B8%B7%E0%B8%AD%E0%B8%9C%E0%B8%B9%E0%B9%89%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%87%E0%B8%B2%E0%B8%99/)
-
-
-## ตัวอย่างการรัน Slurm ใช้ GPU ประมวลผล
-ดาวน์โหลดไฟล์ซอร์สโค้ดสำหรับทดสอบ
-
-    wget https://gist.githubusercontent.com/leimao/bea971e07c98ce669940111b48a4cd7b/raw/f55b4dbf6c51df6b3604f2b598643f9672251f7b/mm_optimization.cu
-    
-ทำการคอมไพล์ซอฟต์แวร์
-
-    module load nvhpc
-    nvcc mm_optimization.cu -o mm_optimization
-
-สร้างไฟล์ Job Script
-
-    vi gpu_job.sh
-    --------------------------------------------------------------
-    #!/bin/bash
-    #SBATCH --gpus=1           # total number of GPUs
-    #SBATCH -o gpujob.%j.out   # Name of stdout output file (%j expands to jobId)
-    #SBATCH -J gputest         # Job name
-    #SBATCH -N 1               # Total number of nodes requested
-    #SBATCH -t 01:00:00        # Run time (hh:mm:ss) - 1 hours
-
-    
-    #CUDA matrix multiplication
-    date
-    ./mm_optimization
-    date    
-
-รัน
-
-    sbatch gpu_job.sh
-    squeue
-
-ตรวจสอบผลลัพธ์
-
-    cat gpujob.<jobid>.out
 
 
 ## Run python in slurm
