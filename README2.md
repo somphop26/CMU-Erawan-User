@@ -575,8 +575,9 @@ mpirun with hostfile
 
 
 
+## ตัวอย่างการรันซอฟต์แวร์ต่าง ๆ โดย Submit ผ่าน Slurm
 
-## Run python in slurm
+### Run python in slurm
 source [https://wandb.ai/wandb/common-ml-errors/reports/How-To-Use-GPU-with-PyTorch---VmlldzozMzAxMDk](https://wandb.ai/wandb/common-ml-errors/reports/How-To-Use-GPU-with-PyTorch---VmlldzozMzAxMDk)
 
 
@@ -614,7 +615,7 @@ submit slurm
 
 
 
-## Submit slurm on Jupyter 
+### Submit slurm on Jupyter 
 
 เข้าใช้งานบน web browser ระบุ URL: [http://10.110.0.11:8000](http://10.110.0.11:8000/) หรือ [http://erawan.cmu.ac.th:8000](http://erawan.cmu.ac.th:8000) แล้ว login เข้าระบบ
 
@@ -658,7 +659,7 @@ Running Jupyter on Slurm GPU Nodes
 
   
 
-## ตัวอย่างการรัน Singularity
+### ตัวอย่างการรัน Singularity
 ใช้งาน (รันโดย user)
 
     module load singularity
@@ -683,17 +684,12 @@ Running Jupyter on Slurm GPU Nodes
     
     singularity run --nv /opt/ohpc/pub/apps/singularity/cp2k_v9.1.0.sif mpirun -np 1  binder.sh cp2k.psmp -i H2O-dft-ls.NREP2.inp
 
-
   
 รัน Job script ที่เครื่อง erawan
 
     sbatch runCP2K
 
-  
-
-
-
-## OpenFoam Example
+### OpenFoam Example
 
 ใช้ enviroment
 
@@ -726,7 +722,10 @@ Running Jupyter on Slurm GPU Nodes
 
 
 
-## Run Jupyter Notebook
+### Run Jupyter Notebook 
+
+**วิธีนี้จะใช้เฉพาะกรณีที่ท่านต้องการทดสอบสคริปต์ Python ของท่านเท่านั้นเมื่อใช้เสร็จหรือเลิกใช้งานควร สั่ง "scancel [JOBID]" เพื่อให้ระบบคืนทรัพยากรเนื่องจากวิธีด้านล่างนี้จะจองทรัพยากรไว้ตามระยะเวลาที่ท่านกำหนด
+
 โหลดโมดูล anaconda3
 
     module load anaconda3
@@ -778,15 +777,6 @@ submit
 *อ่านเพิ่มเติม https://www.tunnelsup.com/how-to-create-ssh-tunnels
 
 เปิดหน้าเว็บไปที่ http://localhost:9999 เข้าไปดู token ใน output slurm
-
-
-
-
-
-
-
-
-
 
 
 
