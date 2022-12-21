@@ -33,6 +33,163 @@ Download : https://filezilla-project.org/download.php?platform=win64
 ![enter image description here](https://github.com/somphop26/CMU-Erawan-User/blob/main/imp/Screenshot%20from%202022-12-14%2023-18-32.png?raw=true)
 
 
+---
+
+## โครงสร้างระบบโดยรวม
+
+### Hardware Spec 
+1 Scheduler node
+
+3 Compute with 8 GPU Nvidia A100 (128 Cores, 2TB)
+
+Storage
+
+-   Archive 288TB (Usable)
+-   Parallel File System (wekaio) 500TB
+
+Network
+
+-   25Gbps
+-   200Gbps Infiniband
+
+     
+### Software
+-   OS: Rocky-8.7
+-   OpenHPC 2.4
+
+
+### Nework share directory (via NFS)
+- /home 288TB Read Write
+- /opt/ohpc/pub Read only
+
+#### เมื่อ wekaio (Raw 500TB) Raw
+- /proj แล้วแต่กำหนดให้กับผู้ใช้
+- /sharedata/blast/db 100TB
+- /scratch 100TB ลบทุก 60 วัน
+
+
+#### NCBI blast database
+ตอนนี้ /home/sharedata/blast/db
+
+Compute node Local disk
+
+/scratch.local
+ 
+### List of application software
+- 2.1 Python 3.6.8
+- 2.2 TensorFlow 2.6.2
+- 2.3 Anaconda 3-2022.05
+- 2.4 Keras 2.6.0
+- 2.5 Pytorch 1.10.2+cu113
+- 2.6 openCV 3.4.6
+- 2.7 R program 4.2.2
+- 2.8 Transformers 4.18.0
+- 2.9 AMPL 20221023
+- 2.10 C language 9.4.0 , 8.5.0
+- 2.11 Clara Train SDK 4.1
+- 2.12 CUDA Toolkit 11.8
+- 2.13 CuDNN 8.7
+- 2.14 GCC 9.4.0 , 8.5.0
+- 2.15 GNU C++ 9.4.0 , 8.5.0
+- 2.16 Matplotlib 3.0.3
+- 2.17 NumPy 1.19.5 , 1.14.3
+- 2.18 Open MPI 4.1.1 (gcc) , 4.1.4 (intel)
+- 2.19 pandas 0.25.3
+- 2.20 PGI Compiler (NVHPC-2022) 22.11
+- 2.21 Ray 2.1.0
+- 2.22 Julia 1.8.3
+- 2.23 Mkl (bundle with Intel One API) 2022.2.1
+ 
+- 3.1 Jupyter notebook 1.13.5
+- 3.2 Gurobi 10.0
+- 3.3 GROMACS 2019.6
+- 3.4 BLAST 2.13.0
+- 3.5 LAMMPS 20190807
+- 3.6 LINGO 19
+- 3.7 Quantum Espresso 6.8
+- 3.8 Singularity 3.7.1-5.1.ohpc.2.1
+- 3.9 ABINIT 9.6.2
+- 3.10 CP2K
+- 3.11 DL_POLY 1.10-12
+- 3.12 FreeSurfer 7.3.2
+- 3.13 NAMD 2.14
+- 3.14 NWChem 7.0.2
+- 3.15 OpenFOAM 10
+- 3.16 ORCA 5.0.3
+- 3.17 SIESTA 4.1.5
+- 3.18 WRF 4.4.1
+- 3.19 WRF-Chem 4.4.1
+  
+#Share space for application data
+
+#NCBI blast database
+
+#ตอนนี้ /home/sharedata/blast/db หลังจากระบบเรียบร้อยแล้วจะเปลี่ยนเป็น /sharedata/blast/db โดยตอนนี้มีข้อมูลต่อไปนี้วางอยู่แล้ว
+-   nr
+-   nt
+-   refseq_protein
+-   refseq_rna
+-   swissprot
+
+
+### กลุ่ม Application software ที่ต้องโหลด module 
+| Application software | Module name|
+|--|--|
+| abinit | abinit |
+| ampl  | ampl | 
+| anaconda  | anaconda3 | 
+| gromacs | gromacs_gpu |   
+| gurobi  | gurobi |  
+| julia  | julia | 
+| lingo  | lingo | 
+| namd  | namd | 
+| orca  | orca |
+| siesta  | siesta| 
+| singularity | singularity |
+| PGI Compiler | nvhpc |
+| dl_poly | dl_poly_mpi |
+| lammps | lammps |
+| AMD | aocc/4.0.0 |
+| Intel | intel |
+| Nvidia cuda toolkit | cuda/11.1 |
+|  | cuda/11.8 |
+|  | cuda/12.0 |
+
+
+### กลุ่ม Application software ที่ต้องโหลด module อื่นที่เกี่ยวข้อง
+- MKL ใช้โมดูล intel
+- WRF ใช้โมดูล intel, netcdf
+- WRF-Chem ใช้โมดูล intel, netcdf
+
+ตำแหน่งไฟล์ WRF
+
+    /opt/ohpc/pub/apps/WRF/intel/
+
+### กลุ่ม Application software ที่ต้องสั่ง source
+OpenFoam
+    
+คำสั่ง source
+
+    source /opt/ohpc/pub/apps/openfoam/OpenFOAM-10/etc/bashrc
+
+
+
+### กลุ่ม Application software ที่ต้องรันผ่าน singularity
+- CP2K
+- Clara Train SDK
+
+
+
+## การใช้งาน module environment
+- module list เราโหลดอะไรอยู่บ้าง
+- module avail มีอะไรให้ใช้บ้าง
+- module load โหลดโมดูล 
+- module list แสดงโมดูลที่ถูกโหลด
+- module unload เลิกโหลดโมดูล
+- module swap ใช้กรณีที่โมดูลมีการ conflict กัน
+- module purge เลิกโหลดโมดูลทั้งหมด
+
+
 
 ## วิธีการใช้งาน Slurm
 
@@ -351,8 +508,14 @@ mpirun with hostfile
 
     sbatch gpu.job
 
+---
+### *** สรุป ***
 
+- การ Submit งานที่ใช้ thread ให้กำหนด #SBATCH --cpus-per-task=  ตามจำนวน threads ที่ใช้งาน
+- การ Submit งานที่เป็น MPI ให้กำหนด #SBATCH --ntasks-per-node=  ตามจำนวน Process ที่ต้องการ หากต้องการกว่า 128 cores ให้กำหนด --ntasks= ตามจำนวนที่เครื่องที่เหมาะสม ระบบเรามี CPU เครื่องละ 128 คอร์ 
+- การ Submit งานที่ใช้ GPU บางงานใช้ GPU เป็นหลัก ให้กำหนด --cpus-per-task=1 หรือไม่กำหนด เพราะค่า default คือ 1 และขอให้มั่นใจว่าโค้ดของท่านไม่แตก thread
 
+---
 
 
 
@@ -395,205 +558,7 @@ mpirun with hostfile
 
 
 
-## โครงสร้างระบบโดยรวม
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Hardware Spec 
-1 Scheduler node
-
-3 Compute with 8 GPU Nvidia A100 (128 Cores, 2TB)
-
-Storage
-
--   Archive 288TB (Usable)
--   Parallel File System (wekaio) 500TB
-
-Network
-
--   25Gbps
--   200Gbps Infiniband
-
-     
-## Software
--   OS: Rocky-8.7
--   OpenHPC 2.4
-
-
-## Nework share directory (via NFS)
-- /home 288TB Read Write
-- /opt/ohpc/pub Read only
-
-### เมื่อ wekaio (Raw 500TB) Raw
-- /proj แล้วแต่กำหนดให้กับผู้ใช้
-- /sharedata/blast/db 100TB
-- /scratch 100TB ลบทุก 60 วัน
-
-
-### NCBI blast database
-ตอนนี้ /home/sharedata/blast/db
-
-Compute node Local disk
-
-/scratch.local
- 
-## List of application software
-- 2.1 Python 3.6.8
-- 2.2 TensorFlow 2.6.2
-- 2.3 Anaconda 3-2022.05
-- 2.4 Keras 2.6.0
-- 2.5 Pytorch 1.10.2+cu113
-- 2.6 openCV 3.4.6
-- 2.7 R program 4.2.2
-- 2.8 Transformers 4.18.0
-- 2.9 AMPL 20221023
-- 2.10 C language 9.4.0 , 8.5.0
-- 2.11 Clara Train SDK 4.1
-- 2.12 CUDA Toolkit 11.8
-- 2.13 CuDNN 8.7
-- 2.14 GCC 9.4.0 , 8.5.0
-- 2.15 GNU C++ 9.4.0 , 8.5.0
-- 2.16 Matplotlib 3.0.3
-- 2.17 NumPy 1.19.5 , 1.14.3
-- 2.18 Open MPI 4.1.1 (gcc) , 4.1.4 (intel)
-- 2.19 pandas 0.25.3
-- 2.20 PGI Compiler (NVHPC-2022) 22.11
-- 2.21 Ray 2.1.0
-- 2.22 Julia 1.8.3
-- 2.23 Mkl (bundle with Intel One API) 2022.2.1
- 
-- 3.1 Jupyter notebook 1.13.5
-- 3.2 Gurobi 10.0
-- 3.3 GROMACS 2019.6
-- 3.4 BLAST 2.13.0
-- 3.5 LAMMPS 20190807
-- 3.6 LINGO 19
-- 3.7 Quantum Espresso 6.8
-- 3.8 Singularity 3.7.1-5.1.ohpc.2.1
-- 3.9 ABINIT 9.6.2
-- 3.10 CP2K
-- 3.11 DL_POLY 1.10-12
-- 3.12 FreeSurfer 7.3.2
-- 3.13 NAMD 2.14
-- 3.14 NWChem 7.0.2
-- 3.15 OpenFOAM 10
-- 3.16 ORCA 5.0.3
-- 3.17 SIESTA 4.1.5
-- 3.18 WRF 4.4.1
-- 3.19 WRF-Chem 4.4.1
-  
-#Share space for application data
-
-#NCBI blast database
-
-#ตอนนี้ /home/sharedata/blast/db หลังจากระบบเรียบร้อยแล้วจะเปลี่ยนเป็น /sharedata/blast/db โดยตอนนี้มีข้อมูลต่อไปนี้วางอยู่แล้ว
--   nr
--   nt
--   refseq_protein
--   refseq_rna
--   swissprot
-
-
-## กลุ่ม Application software ที่ต้องโหลด module 
-| Application software | Module name|
-|--|--|
-| abinit | abinit |
-| ampl  | ampl | 
-| anaconda  | anaconda3 | 
-| gromacs | gromacs_gpu |   
-| gurobi  | gurobi |  
-| julia  | julia | 
-| lingo  | lingo | 
-| namd  | namd | 
-| orca  | orca |
-| siesta  | siesta| 
-| singularity | singularity |
-| PGI Compiler | nvhpc |
-| dl_poly | dl_poly_mpi |
-| lammps | lammps |
-
-## กลุ่ม Application software ที่ต้องโหลด module อื่นที่เกี่ยวข้อง
-- MKL ใช้โมดูล intel
-- WRF ใช้โมดูล intel, netcdf
-- WRF-Chem ใช้โมดูล intel, netcdf
-
-ตำแหน่งไฟล์ WRF
-
-    /opt/ohpc/pub/apps/WRF/intel/
-
-## กลุ่ม Application software ที่ต้องสั่ง source
-OpenFoam
-    
-คำสั่ง source
-
-    source /opt/ohpc/pub/apps/openfoam/OpenFOAM-10/etc/bashrc
-
-
-
-## กลุ่ม Application software ที่ต้องรันผ่าน singularity
-- CP2K
-- Clara Train SDK
-
-
-
-
-## การใช้งาน module environment
-- module list เราโหลดอะไรอยู่บ้าง
-- module avail มีอะไรให้ใช้บ้าง
-- module load โหลดโมดูล 
-- module list แสดงโมดูลที่ถูกโหลด
-- module unload เลิกโหลดโมดูล
-- module swap ใช้กรณีที่โมดูลมีการ conflict กัน
-- module purge เลิกโหลดโมดูลทั้งหมด
 
 
 
