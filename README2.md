@@ -5,7 +5,7 @@
 
 เปิด PowerShell บน Windows จากนั้นพิมพ์คำสั่งด้านล่าง
 
-    ssh  [Username]@[IP Address or Domain name]
+    ssh [Username]@[IP Address or Domain name]
 
 เช่น
 
@@ -44,14 +44,27 @@ Slurm เป็นซอฟต์แวร์ Job scheduler มีหน้า�
 
 Submit Job script ไปต่อคิวที่ slurm สำหรับรอประมวลผล
 
-    sbatch [Job script file]
-       Submitted batch job <jobid>
+    $ sbatch [Job script file]
+        Submitted batch job <jobid>
 
 แสดงข้อมูลเกี่ยวกับงานที่อยู่ในคิวในSlurm
 
-    squeue
-          JOBID     PARTITION       NAME      USER   ST    TIME  NODES NODELIST(REASON)
-        <jobid>           gpu   test.job    user99   R     0:30      1 compute3
+    $ squeue
+        JOBID     PARTITION       NAME      USER   ST    TIME  NODES NODELIST(REASON)
+      <jobid>           gpu   test.job    user99   R     0:30      1 compute3
+
+ยกเลิกงานที่อยู่ในคิวใน Slurm
+
+    $ scancel [JobID]
+
+แสดงสถานะของ Partition
+
+    $ sinfo
+       PARTITION  AVAIL   TIMELIMIT  NODES  STATE  NODELIST
+       normal        up  2-00:00:00      2  idle  compute[1-2]
+       gpu           up     6:00:00      1  idle  compute3
+
+
 
 
 แสดงข้อมูลของแต่ละ Compute node
