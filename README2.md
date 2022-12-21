@@ -243,7 +243,7 @@ source https://slurm.schedmd.com/squeue.html#SECTION_JOB-STATE-CODES
     tar xvf water_GMX50_bare.tar.gz
     cd ./water-cut1.0_GMX50_bare/
 
-สร้างไฟล์ Job script ตั้งชื่อ "gromac-water.gpu"
+สร้างไฟล์ Job script ตั้งชื่อ "gromac-water.gpu" โดยเนื้อหาจะระบุให้ใช้ CPU ประมวลผลจำนวน 64 core (ตัวแปร --nodes= และ --ntasks= หากไม่ระบุค่าเริ่มต้นจะเท่ากับ 1)
 
     #!/bin/bash
     #SBATCH --job-name=multithread   # create a short name for your job
@@ -262,7 +262,7 @@ source https://slurm.schedmd.com/squeue.html#SECTION_JOB-STATE-CODES
 
 ** อย่ากำหนดจำนวน thread ในคำสั่งแบบเวลารันเอง ให้กำหนดผ่านตัวแปร เพื่อให้ slurm รู้ว่ามีการใช้ thread ไปเท่าไหร่ จะได้จัดสรรงานให้พอดีกับระบบ 
 
-
+ในคำสั่งที่ท่านใช้รันห้ามกำหนด thread
 
 
 
