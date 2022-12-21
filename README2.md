@@ -132,8 +132,8 @@ Submit Job script ไปต่อคิวที่ slurm สำหรับร�
 
     scancel <jobid>
 
----
-**JOB STATE CODES**
+
+**JOB STATE CODES (ST)**
 
 Jobs typically pass through several states in the course of their execution. The typical states are PENDING, RUNNING, SUSPENDED, COMPLETING, and COMPLETED. An explanation of each state follows.
 
