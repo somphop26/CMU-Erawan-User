@@ -276,7 +276,8 @@ Submit Job script ไปต่อคิวที่ slurm สำหรับร�
 
 #### ตัวอย่างการรันงานแบบ Serial Jobs
 
-โดยเนื้อหาจะระบุให้แบ่งงานจำนวน 1 tasks ใช้ CPU ประมวลผลจำนวน 1 core
+งานที่เป็น Serial Job จะใช้ CPU 1 core ตัวแปรที่ใช้กำหนดคือ --ntasks=1 ซึ่งจะกำหนดหรือไม่ก็ได้เพราะค่าเริ่มต้นคือ 1 อยู่แล้ว
+
 
     #!/bin/bash
     #SBATCH --job-name=mytest        # create a short name for your job
@@ -298,11 +299,14 @@ Submit Job script ไปต่อคิวที่ slurm สำหรับร�
 
 ![enter image description here](https://github.com/somphop26/CMU-Erawan-User/blob/main/imp/Screenshot%20from%202022-12-21%2017-18-46.png?raw=true)
 
+
 **JOB STATE CODES (ST)**
 
 Jobs typically pass through several states in the course of their execution. The typical states are PENDING (PD), RUNNING (R), SUSPENDED (S), COMPLETING (CG) , and COMPLETED (CD). An explanation of each state follows.
 
-source https://slurm.schedmd.com/squeue.html#SECTION_JOB-STATE-CODES
+Source https://slurm.schedmd.com/squeue.html#SECTION_JOB-STATE-CODES
+
+
 
 ---
 
