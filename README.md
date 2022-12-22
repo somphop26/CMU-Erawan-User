@@ -117,7 +117,8 @@ Compute node Local disk
     /opt/ohpc/pub/apps/WRF/
     /opt/ohpc/pub/apps/WRF-Chem
     
-    ถ้าใช้เวอร์ชั่นที่คอมไพล์ด้วย intel ให้สั่ง module swap gnu9 intel ก่อน
+    ถ้าใช้เวอร์ชั่นที่คอมไพล์ด้วย intel ให้สั่ง 
+    module swap gnu9 intel 
     จากนั้นโหลด netcdf 
     module load netcdf
 
