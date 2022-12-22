@@ -1,42 +1,3 @@
-﻿
-# Erawan Cluster
-
-## วิธีการรีโมท SSH เข้าใช้งานระบบ
-
-เปิด PowerShell บน Windows จากนั้นพิมพ์คำสั่งด้านล่าง
-
-    ssh [Username]@[IP Address or Domain name]
-
-เช่น
-
-    ssh user@erawan.cmu.ac.th
-
----
-
-## วิธีการคัดลอกไฟล์
-
-    scp /path/to/[ไฟล์ที่ต้องการคัดลอก] [username]@[IP Address or Domain name]:/path/to/[ตำแหน่งที่ต้องการวางไฟล์]
-
-เช่น
-
-    scp C:\temp\test.txt user@10.110.0.11:/home/user/
-
-หรือใช้โปรแกรม Filezilla
-
-Download : https://filezilla-project.org/download.php?platform=win64
-
-ระบุ 
-
-- Host : erawan.cmu.ac.th
-- Username : user[01-50]
-- Password :  
-- Port : 22
-
-![enter image description here](https://github.com/somphop26/CMU-Erawan-User/blob/main/imp/Screenshot%20from%202022-12-14%2023-18-32.png?raw=true)
-
-
----
-
 ## โครงสร้างระบบโดยรวม
 
 ### Hardware Spec 
@@ -191,6 +152,45 @@ OpenFoam
 - module purge เลิกโหลดโมดูลทั้งหมด
 
 ---
+
+# Erawan Cluster
+
+## วิธีการรีโมท SSH เข้าใช้งานระบบ
+
+เปิด PowerShell บน Windows จากนั้นพิมพ์คำสั่งด้านล่าง
+
+    ssh [Username]@[IP Address or Domain name]
+
+เช่น
+
+    ssh user@erawan.cmu.ac.th
+
+---
+
+## วิธีการคัดลอกไฟล์
+
+    scp /path/to/[ไฟล์ที่ต้องการคัดลอก] [username]@[IP Address or Domain name]:/path/to/[ตำแหน่งที่ต้องการวางไฟล์]
+
+เช่น
+
+    scp C:\temp\test.txt user@10.110.0.11:/home/user/
+
+หรือใช้โปรแกรม Filezilla
+
+Download : https://filezilla-project.org/download.php?platform=win64
+
+ระบุ 
+
+- Host : erawan.cmu.ac.th
+- Username : user[01-50]
+- Password :  
+- Port : 22
+
+![enter image description here](https://github.com/somphop26/CMU-Erawan-User/blob/main/imp/Screenshot%20from%202022-12-14%2023-18-32.png?raw=true)
+
+
+---
+
 
 ## วิธีการใช้งาน Slurm
 
@@ -517,55 +517,6 @@ mpirun with hostfile
 - การ Submit งานที่ใช้ GPU บางงานใช้ GPU เป็นหลัก ให้กำหนด --cpus-per-task=1 หรือไม่กำหนด เพราะค่า default คือ 1 และขอให้มั่นใจว่าโค้ดของท่านไม่แตก thread
 
 ---
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
