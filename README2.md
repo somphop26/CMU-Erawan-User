@@ -23,12 +23,6 @@
 - /home 288TB (Read, Write)
 - /opt/ohpc/pub (Read only)
 
-#### เมื่อ wekaio (Raw 500TB)
-
-- /proj แล้วแต่กำหนดให้กับผู้ใช้
-- /sharedata/blast/db 100TB
-- /scratch 100TB ลบทุก 60 วัน
-
 
 #### NCBI blast database
 
