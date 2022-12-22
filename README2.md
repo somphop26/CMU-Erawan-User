@@ -31,12 +31,18 @@
 
 
 #### NCBI blast database
-ตอนนี้วางอยู่ที่ /home/sharedata/blast/db
+
+ตอนนี้ /home/sharedata/blast/db หลังจากระบบเรียบร้อยแล้วจะเปลี่ยนเป็น /sharedata/blast/db โดยตอนนี้มีข้อมูลต่อไปนี้วางอยู่แล้ว
+-   nr
+-   nt
+-   refseq_protein
+-   refseq_rna
+-   swissprot
 
 Compute node Local disk
 
 /scratch.local
- 
+
       
 ### Software
 -   OS: Rocky linux 8.7
@@ -89,17 +95,6 @@ Compute node Local disk
 | 3.18 WRF | 4.4.1 |
 | 3.19 WRF-Chem | 4.4.1 |
  
-#Share space for application data
-
-#NCBI blast database
-
-#ตอนนี้ /home/sharedata/blast/db หลังจากระบบเรียบร้อยแล้วจะเปลี่ยนเป็น /sharedata/blast/db โดยตอนนี้มีข้อมูลต่อไปนี้วางอยู่แล้ว
--   nr
--   nt
--   refseq_protein
--   refseq_rna
--   swissprot
-
 
 ### กลุ่ม Application software ที่ต้องโหลด module 
 | Application software | Module name|
@@ -135,6 +130,7 @@ Compute node Local disk
     /opt/ohpc/pub/apps/WRF/intel/
 
 ### กลุ่ม Application software ที่ต้องสั่ง source
+
 OpenFoam
     
 คำสั่ง source
@@ -144,6 +140,7 @@ OpenFoam
 
 
 ### กลุ่ม Application software ที่ต้องรันผ่าน singularity
+
 - CP2K
 - Clara Train SDK
 
