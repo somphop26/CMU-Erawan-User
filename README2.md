@@ -69,7 +69,6 @@ Compute node Local disk
 | 2.21 Ray | 2.1.0 |
 | 2.22 Julia | 1.8.3 |
 | 2.23 Mkl (bundle with Intel One API) | 2022.2.1 |
- 
 | 3.1 Jupyter notebook | 1.13.5 |
 | 3.2 Gurobi | 10.0 |
 | 3.3 GROMACS | 2019.6 |
