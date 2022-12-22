@@ -120,19 +120,18 @@ Compute node Local disk
     /opt/ohpc/pub/apps/WRF/
     /opt/ohpc/pub/apps/WRF-Chem
     
+    ถ้าใช้เวอร์ชั่นที่คอมไพล์ด้วย intel ให้สั่ง module swap gnu9 intel ก่อน
+    จากนั้นโหลด netcdf 
+    module load netcdf
+
+    ถ้าใช้ intel ต้องสั่งคำสั่งต่อไปนี้ก่อนด้วย
     ulimit -l unlimited
     ulimit -s unlimited
-    
     export KMP_STACKSIZE=20480000000
 
-### กลุ่ม Application software ที่ต้องสั่ง source
-
-- OpenFoam
-    
- คำสั่ง source
-
+### OpenFoam ต้องใช้คำสั่ง source
+  
     source /opt/ohpc/pub/apps/openfoam/OpenFOAM-10/etc/bashrc
-
 
 
 ### กลุ่ม Application software ที่ต้องรันผ่าน singularity
@@ -162,7 +161,7 @@ Compute node Local disk
 
 เช่น
 
-    scp C:\temp\test.txt user@10.110.0.11:/home/user/
+    scp C:\temp\test.txt user@erawan.cmu.ac.th:/home/user/
 
 หรือใช้โปรแกรม Filezilla
 
@@ -194,9 +193,15 @@ Download : https://filezilla-project.org/download.php?platform=win64
 
 ## วิธีการใช้งาน Slurm
 
-Slurm เป็นซอฟต์แวร์ Job scheduler มีหน้าที่ในการจัดลำดับงานในระบบ โดยหลักการทำงานของ Slurm คือผู้ใช้ต้องส่ง Job script ผ่านเครื่อง Login node เข้าไปต่อคิวใน Slurm เพื่อรอที่จะรันงาน เมื่อถึงคิว Slurm จะทำการส่งงานไปรันที่เครื่อง Compute node ตาม Partition ที่ท่านกำหนดในไฟล์ Job script เมื่อประมวลผลเสร็จจะส่งผลลัพธ์ไปที่เครื่อง Login node ใน home directory ของผู้ใช้
+Slurm เป็นซอฟต์แวร์ Job scheduler มีหน้าที่ในการจัดลำดับงานในระบบ โดยหลักการทำงานของ Slurm คือผู้ใช้ต้องส่ง Job script ผ่านเครื่อง Login node เข้าไปต่อคิวใน Slurm เพื่อรอที่จะรันงาน เมื่อถึงคิว Slurm จะทำการส่งงานไปรันที่เครื่อง Compute node ตาม Partition ที่ท่านกำหนดในไฟล์ Job script เมื่อประมวลผลเสร็จ ผลลัพธ์จะเก็บอยู่ในตำแหน่งที่ท่านรัน
 
 ผู้ใช้จะต้องเขียนไฟล์ Job script ขึ้นมาเพื่อส่งงานไปรันที่ Slurm เท่านั้น **ห้ามรีโมทไปรันที่เครื่องโดยตรง** เพราะจะส่งผลให้ระบบมีประสิทธิภาพการทำงานโดยรวมที่ไม่ดี โดยไฟล์ Job script ท่านสามารถระบุความต้องการต่าง ๆ ได้ เช่น ระบุจำนวนทรัพยากรที่ต้องการ (CPU, GPU, RAM) ระบุระยะเวลาที่ใช้ในการรัน ระบุ Partition (Resource group) ที่ต้องการใช้งาน เป็นต้น
+
+1. ssh มายัง login node
+2. ให้ submit งานผ่าน Slurm batch หรือ interactive jobs จากเครื่อง login node (ห้ามรันงานที่ login node)
+- การ Submit งานที่ใช้ thread ให้กำหนด #SBATCH --cpus-per-task=  ตามจำนวน threads ที่ใช้งาน
+- การ Submit งานที่เป็น MPI ให้กำหนด #SBATCH --ntasks-per-node=  ตามจำนวน Process ที่ต้องการ หากต้องการกว่า 128 cores ให้กำหนด --ntasks= ตามจำนวนที่เครื่องที่เหมาะสม ระบบเรามี CPU เครื่องละ 128 คอร์ 
+- การ Submit งานที่ใช้ GPU บางงานใช้ GPU เป็นหลัก ให้กำหนด --cpus-per-task=1 หรือไม่กำหนด เพราะค่า default คือ 1 และขอให้มั่นใจว่าโค้ดของท่านไม่แตก thread
 
 ### คำสั่งพื้นฐานสำหรับใช้งาน Slurm มีดังนี้
 
@@ -511,13 +516,7 @@ mpirun with hostfile
     sbatch gpu.job
 
 ---
-### *** สรุป ***
 
-- การ Submit งานที่ใช้ thread ให้กำหนด #SBATCH --cpus-per-task=  ตามจำนวน threads ที่ใช้งาน
-- การ Submit งานที่เป็น MPI ให้กำหนด #SBATCH --ntasks-per-node=  ตามจำนวน Process ที่ต้องการ หากต้องการกว่า 128 cores ให้กำหนด --ntasks= ตามจำนวนที่เครื่องที่เหมาะสม ระบบเรามี CPU เครื่องละ 128 คอร์ 
-- การ Submit งานที่ใช้ GPU บางงานใช้ GPU เป็นหลัก ให้กำหนด --cpus-per-task=1 หรือไม่กำหนด เพราะค่า default คือ 1 และขอให้มั่นใจว่าโค้ดของท่านไม่แตก thread
-
----
 
 
 
