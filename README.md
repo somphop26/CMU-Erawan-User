@@ -90,7 +90,7 @@ Compute node Local disk
 | 3.19 WRF-Chem | 4.4.1 |
  
 
-### กลุ่ม Application software ที่ต้องโหลด module 
+### Application software ที่ต้องโหลด module 
 | Application software | Module name|
 |--|--|
 | abinit | abinit |
@@ -132,7 +132,7 @@ Compute node Local disk
     source /opt/ohpc/pub/apps/openfoam/OpenFOAM-10/etc/bashrc
 
 
-### กลุ่ม Application software ที่ต้องรันผ่าน singularity
+### Application software ที่ต้องรันผ่าน singularity
 
 - CP2K
 - Clara Train SDK
@@ -233,6 +233,15 @@ Submit Job script ไปต่อคิวที่ slurm สำหรับร�
         JOBID     PARTITION       NAME      USER   ST    TIME  NODES NODELIST(REASON)
       <jobid>           gpu   test.job    user99   R     0:30      1 compute3
 
+![enter image description here](https://github.com/somphop26/CMU-Erawan-User/blob/main/imp/Screenshot%20from%202022-12-21%2017-18-46.png?raw=true)
+
+**JOB STATE CODES (ST)**
+
+Jobs typically pass through several states in the course of their execution. The typical states are PENDING (PD), RUNNING (R), SUSPENDED (S), COMPLETING (CG) , and COMPLETED (CD). An explanation of each state follows.
+
+Source https://slurm.schedmd.com/squeue.html#SECTION_JOB-STATE-CODES
+
+
 ยกเลิกงานที่อยู่ในคิวใน Slurm
 
     $ scancel [JobID]
@@ -293,21 +302,6 @@ Submit Job script ไปต่อคิวที่ slurm สำหรับร�
 รัน
 
     sbatch myscriptR.job
-
-แสดงสถานะ
-
-    squeue
-
-![enter image description here](https://github.com/somphop26/CMU-Erawan-User/blob/main/imp/Screenshot%20from%202022-12-21%2017-18-46.png?raw=true)
-
-
-**JOB STATE CODES (ST)**
-
-Jobs typically pass through several states in the course of their execution. The typical states are PENDING (PD), RUNNING (R), SUSPENDED (S), COMPLETING (CG) , and COMPLETED (CD). An explanation of each state follows.
-
-Source https://slurm.schedmd.com/squeue.html#SECTION_JOB-STATE-CODES
-
-
 
 ---
 
