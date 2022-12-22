@@ -131,9 +131,9 @@ Compute node Local disk
 
 ### กลุ่ม Application software ที่ต้องสั่ง source
 
-OpenFoam
+- OpenFoam
     
-คำสั่ง source
+ คำสั่ง source
 
     source /opt/ohpc/pub/apps/openfoam/OpenFOAM-10/etc/bashrc
 
