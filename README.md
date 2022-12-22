@@ -235,7 +235,8 @@ Submit Job script ไปต่อคิวที่ slurm สำหรับร�
 
 ![enter image description here](https://github.com/somphop26/CMU-Erawan-User/blob/main/imp/Screenshot%20from%202022-12-21%2017-18-46.png?raw=true)
 
-**JOB STATE CODES (ST)**
+
+JOB STATE CODES (ST)
 
 Jobs typically pass through several states in the course of their execution. The typical states are PENDING (PD), RUNNING (R), SUSPENDED (S), COMPLETING (CG) , and COMPLETED (CD). An explanation of each state follows.
 
