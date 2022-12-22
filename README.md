@@ -235,11 +235,8 @@ Submit Job script ไปต่อคิวที่ slurm สำหรับร�
 ![enter image description here](https://github.com/somphop26/CMU-Erawan-User/blob/main/imp/Screenshot%20from%202022-12-21%2017-18-46.png?raw=true)
 
 
-JOB STATE CODES (ST)
-
-โดยทั่วไปงานจะผ่านหลายสถานะในระหว่างการดำเนินการ สถานะทั่วไปคือ PENDING (PD), RUNNING (R), SUSPENDED (S), COMPLETING (CG) และ COMPLETED (CD) 
-
-ผ่านเพิ่มเติมที่ https://slurm.schedmd.com/squeue.html#SECTION_JOB-STATE-CODES
+JOB STATE CODES (ST) โดยทั่วไปงานจะผ่านหลายสถานะในระหว่างการดำเนินการ สถานะทั่วไปคือ PENDING (PD), RUNNING (R), SUSPENDED (S), COMPLETING (CG) และ COMPLETED (CD) 
+อ่านเพิ่มเติมที่ https://slurm.schedmd.com/squeue.html#SECTION_JOB-STATE-CODES
 
 
 ยกเลิกงานที่อยู่ในคิวใน Slurm
