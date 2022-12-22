@@ -110,9 +110,6 @@ Compute node Local disk
 | AMD | aocc/4.0.0 |
 | Intel | intel |
 | Nvidia cuda toolkit | cuda/11.1 |
-|  | cuda/11.8 |
-|  | cuda/12.0 |
-
 
 
 ตำแหน่งไฟล์ WRF และ WRF-Chem
