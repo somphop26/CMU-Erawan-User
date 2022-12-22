@@ -50,7 +50,7 @@ Compute node Local disk
 
 
 ### List of application software
-| Application software | Version |
+| Application software | Versions |
 |--|--|
 | 2.1 Python | 3.6.8(default), 3.8.13, 3.9.13, 2.7.18 |
 | 2.2 TensorFlow | 2.6.2 |
