@@ -146,17 +146,6 @@ OpenFoam
 
 ---
 
-## การใช้งาน module environment
-- module list เราโหลดอะไรอยู่บ้าง
-- module avail มีอะไรให้ใช้บ้าง
-- module load โหลดโมดูล 
-- module list แสดงโมดูลที่ถูกโหลด
-- module unload เลิกโหลดโมดูล
-- module swap ใช้กรณีที่โมดูลมีการ conflict กัน
-- module purge เลิกโหลดโมดูลทั้งหมด
-
----
-
 
 ## วิธีการรีโมท SSH เข้าใช้งานระบบ
 
@@ -191,6 +180,17 @@ Download : https://filezilla-project.org/download.php?platform=win64
 
 ![enter image description here](https://github.com/somphop26/CMU-Erawan-User/blob/main/imp/Screenshot%20from%202022-12-14%2023-18-32.png?raw=true)
 
+
+---
+
+## การใช้งาน module environment
+- module list เราโหลดอะไรอยู่บ้าง
+- module avail มีอะไรให้ใช้บ้าง
+- module load โหลดโมดูล 
+- module list แสดงโมดูลที่ถูกโหลด
+- module unload เลิกโหลดโมดูล
+- module swap ใช้กรณีที่โมดูลมีการ conflict กัน
+- module purge เลิกโหลดโมดูลทั้งหมด
 
 ---
 
