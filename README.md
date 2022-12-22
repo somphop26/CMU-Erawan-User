@@ -431,32 +431,18 @@ source https://slurm.schedmd.com/squeue.html#SECTION_JOB-STATE-CODES
 
 #### ตัวอย่างการรันงานแบบ MPI Jobs
 
-สร้างไฟล์ mpi programming ตั้งชื่อ "myrank.c"
-   
-    #include <stdio.h>
-    #include "mpi.h"
-    int main(int argc,char *argv[]) {
-             int size,len,rank;
-             char procname[100];
-             MPI_Init(&argc,&argv);
-             MPI_Comm_size(MPI_COMM_WORLD,&size);
-             MPI_Comm_rank(MPI_COMM_WORLD,&rank);
-             MPI_Get_processor_name(procname,&len);
-             printf("I'm rank = %d of %d process on %s\n",rank,size,procname);
-             MPI_Finalize();
-             return 0;
-    }
 
-คอมไพล์โปรแกรม
+จากเดิมที่รันด้วยมือ จะรันแบบนี้
 
-    mpicc myrank.c
+mpirun with hostfile
 
-สร้างไฟล์ Job script ตั้งชื่อ "mpi.job" โดยเนื้อหาจะระบุให้ใช้ 2 node แบ่ง tasks จำนวน 200 tasks และใช้ 1 core ต่อ 1 tasks
+    mpirun -np 200 -hostfile hosts ./myprog.o
+    
+โดยจากเดิมจะกำหนดจำนวน tasks โดยใช้ Option -np 200 เปลี่ยนเป็นระบุในไฟล์ Job script ที่ตัวแปร --ntasks=200 แทน
 
     #!/bin/bash
     #SBATCH --job-name=mpi-job       # create a short name for your job
     #SBATCH -p cpu                # pritition name
-    #SBATCH --nodes=2                # node count
     #SBATCH --ntasks=200             # number of tasks per node
     #SBATCH --cpus-per-task=1        # cpu-cores per task (>1 if multi-threaded tasks)
     #SBATCH --time=00:05:00          # total run time limit (HH:MM:SS)
@@ -469,32 +455,13 @@ source https://slurm.schedmd.com/squeue.html#SECTION_JOB-STATE-CODES
     
     sbatch mpi.job
 
-**จากเดิมที่รันด้วยมือ จะรันแบบนี้**
 
-create file "hosts" (for openmpi)
-
-    compute0 slots=128
-    compute1 slots=128
-    compute2 slots=128
-
-mpirun with hostfile
-
-    mpirun -np 4 -hostfile hosts ./a.out
 
 
 
 #### ตัวอย่างการรันงานแบบ GPU Jobs
 
-ดาวน์โหลดไฟล์ซอร์สโค้ดสำหรับทดสอบ
-
-    wget https://gist.githubusercontent.com/leimao/bea971e07c98ce669940111b48a4cd7b/raw/f55b4dbf6c51df6b3604f2b598643f9672251f7b/mm_optimization.cu
-    
-ทำการคอมไพล์ซอฟต์แวร์
-
-    module load nvhpc
-    nvcc mm_optimization.cu -o mm_optimization
-
-สร้างไฟล์ Job script ตั้งชื่อ "gpu.job" โดยเนื้อหาจะระบุตัวแปร "--gpus=1" เพิ่มขึ้นมาเพื่อกำหนดให้งานใช้ GPU จำนวน 1 การ์ด 
+โดยเนื้อหาจะระบุตัวแปร "--gpus=1" เพิ่มขึ้นมาเพื่อกำหนดให้งานใช้ GPU ตามจำนวนที่ต้องการ โดยในตัวอย่างระบุให้ใช้ GPU จำนวน 1 การ์ด 
 
     #!/bin/bash
     #SBATCH --job-name=mnist         # create a short name for your job
