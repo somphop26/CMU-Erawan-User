@@ -46,7 +46,7 @@ Compute node Local disk
 ### List of application software
 | Application software | Version |
 |--|--|
-| 2.1 Python | 3.6.8 |
+| 2.1 Python | 3.6.8(default), 3.8.13, 3.9.13, 2.7.18 |
 | 2.2 TensorFlow | 2.6.2 |
 | 2.3 Anaconda | 3-2022.05 |
 | 2.4 Keras | 2.6.0 |
@@ -57,7 +57,7 @@ Compute node Local disk
 | 2.9 AMPL | 20221023 |
 | 2.10 C language | 9.4.0 , 8.5.0 |
 | 2.11 Clara Train SDK | 4.1 |
-| 2.12 CUDA Toolkit | 11.8 |
+| 2.12 CUDA Toolkit | 11.1, 11.8, 12.0 |
 | 2.13 CuDNN | 8.7 |
 | 2.14 GCC | 9.4.0 , 8.5.0 |
 | 2.15 GNU C++ | 9.4.0 , 8.5.0 |
@@ -71,15 +71,15 @@ Compute node Local disk
 | 2.23 Mkl (bundle with Intel One API) | 2022.2.1 |
 | 3.1 Jupyter notebook | 1.13.5 |
 | 3.2 Gurobi | 10.0 |
-| 3.3 GROMACS | 2019.6 |
+| 3.3 GROMACS | 2022.4 |
 | 3.4 BLAST | 2.13.0 |
-| 3.5 LAMMPS | 20190807 |
+| 3.5 LAMMPS | 202105027 |
 | 3.6 LINGO | 19 |
 | 3.7 Quantum Espresso | 6.8 |
 | 3.8 Singularity | 3.7.1-5.1.ohpc.2.1 |
 | 3.9 ABINIT | 9.6.2 |
-| 3.10 CP2K |  |
-| 3.11 DL_POLY | 1.10-12 |
+| 3.10 CP2K | 9.1.0 |
+| 3.11 DL_POLY | 4 |
 | 3.12 FreeSurfer | 7.3.2 |
 | 3.13 NAMD | 2.14 |
 | 3.14 NWChem | 7.0.2 |
