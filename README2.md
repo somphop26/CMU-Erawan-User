@@ -11,7 +11,7 @@
 ### Storage
 
 -   Archive 288TB (Usable)
--   Parallel File System (wekaio) 500TB
+-   Parallel File System (wekaio) 150TB
 
 ### Network
 
@@ -223,8 +223,9 @@ Submit Job script ไปต่อคิวที่ slurm สำหรับร�
 
     $ sinfo
        PARTITION  AVAIL   TIMELIMIT  NODES  STATE  NODELIST
-       normal        up  2-00:00:00      2  idle  compute[1-2]
-       gpu           up     6:00:00      1  idle  compute3
+       gpu*          up  3-00:00:00      2   idle compute[1-2]
+       cpu           up  3-00:00:00      2   idle compute[1-2]
+       short         up  1-00:00:00      1   idle compute3
 
 - Partition คือ กลุ่มประเภทเครื่องที่ใช้งาน (Resource group)
 - Timelimit คือ ระยะเวลาสูงสุดที่สามารถใช้งานได้ต่อ 1 งาน
