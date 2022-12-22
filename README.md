@@ -147,7 +147,7 @@ Compute node Local disk
 | C++ | g++ | icpx | clang | nvc++ (pgcc+) | - |
 | Fortran | gfortran | ifx | flang | nvfortran (pgfortran) | - |
 | Cuda (nvcc) | - | - | - | - | nvcc |
-| Module load | - | intel | aocc | nvhpc | cuda/11.1 | 
+| Module load | - | intel | aocc | nvhpc | cuda/11.1 <br/> cuda/11.8 <br/> cuda/12.0| 
 | | | | | | cuda/11.8 |
 | | | | | | cuda/12.0 |
 
