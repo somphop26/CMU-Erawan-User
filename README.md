@@ -114,14 +114,16 @@ Compute node Local disk
 |  | cuda/12.0 |
 
 
-### กลุ่ม Application software ที่ต้องโหลด module อื่นที่เกี่ยวข้อง
-- MKL ใช้โมดูล intel
-- WRF ใช้โมดูล intel, netcdf
-- WRF-Chem ใช้โมดูล intel, netcdf
 
-ตำแหน่งไฟล์ WRF
+ตำแหน่งไฟล์ WRF และ WRF-Chem
 
-    /opt/ohpc/pub/apps/WRF/intel/
+    /opt/ohpc/pub/apps/WRF/
+    /opt/ohpc/pub/apps/WRF-Chem
+    
+    ulimit -l unlimited
+    ulimit -s unlimited
+    
+    export KMP_STACKSIZE=20480000000
 
 ### กลุ่ม Application software ที่ต้องสั่ง source
 
