@@ -143,11 +143,11 @@ Compute node Local disk
 ### Compiler ที่ติดตั้งอยู่ในระบบ
 | Compiler | GCC | Intel (One API) | AMD (AOCC) | Nvidia PGI | CUDA |
 |--|--|--|--|--|--|
-| C | Gcc | icx | clang | nvc (pgcc)| - |
+| C | gcc | icx | clang | nvc (pgcc)| - |
 | C++ | g++ | icpx | clang | nvc++ (pgcc+) | - |
 | Fortran | gfortran | ifx | flang | nvfortran (pgfortran) | - |
 | Cuda (nvcc) | - | - | - | - | nvcc |
-| module load | - | intel | aocc | nvhpc | cuda/11.1 | 
+| Module load | - | intel | aocc | nvhpc | cuda/11.1 | 
 | | | | | | cuda/11.8 |
 | | | | | | cuda/12.0 |
 
