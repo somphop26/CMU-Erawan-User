@@ -202,6 +202,14 @@ Download : https://filezilla-project.org/download.php?platform=win64
 
 Slurm เป็นซอฟต์แวร์ Job scheduler มีหน้าที่ในการจัดลำดับงานในระบบ โดยหลักการทำงานของ Slurm คือผู้ใช้ต้องส่ง Job script ผ่านเครื่อง Login node เข้าไปต่อคิวใน Slurm เพื่อรอที่จะรันงาน เมื่อถึงคิว Slurm จะทำการส่งงานไปรันที่เครื่อง Compute node ตาม Partition ที่ท่านกำหนดในไฟล์ Job script เมื่อประมวลผลเสร็จ ผลลัพธ์จะเก็บอยู่ในตำแหน่งที่ท่านรัน
 
+| Partition | CPU | GPU | Time limit |
+| gpu is limit | 8 CPU cores/node in compute[1-2] | up to 72 hours |
+| cpu is limit | 120 CPU cores/node in compute[1-2] | up to 72 hours |
+| short is limit | 128 CPU cores/node in compute3 | up to 24 hours |
+
+
+
+
 ผู้ใช้จะต้องเขียนไฟล์ Job script ขึ้นมาเพื่อส่งงานไปรันที่ Slurm เท่านั้น **ห้ามรีโมทไปรันที่เครื่องโดยตรง** เพราะจะส่งผลให้ระบบมีประสิทธิภาพการทำงานโดยรวมที่ไม่ดี โดยไฟล์ Job script ท่านสามารถระบุความต้องการต่าง ๆ ได้ เช่น ระบุจำนวนทรัพยากรที่ต้องการ (CPU, GPU, RAM) ระบุระยะเวลาที่ใช้ในการรัน ระบุ Partition (Resource group) ที่ต้องการใช้งาน เป็นต้น
 
 1. ssh มายัง login node
