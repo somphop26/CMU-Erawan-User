@@ -109,7 +109,7 @@ Compute node Local disk
 | lammps | lammps |
 | AMD | aocc/4.0.0 |
 | Intel | intel |
-| Nvidia cuda toolkit | cuda/11.1 |
+| Nvidia cuda toolkit | cuda/11.1 <br/> cuda/11.8 <br/> cuda/12.0 |
 
 
 ตำแหน่งไฟล์ WRF และ WRF-Chem
@@ -145,8 +145,6 @@ Compute node Local disk
 | Fortran | gfortran | ifx | flang | nvfortran (pgfortran) | - |
 | Cuda (nvcc) | - | - | - | - | nvcc |
 | Module load | - | intel | aocc | nvhpc | cuda/11.1 <br/> cuda/11.8 <br/> cuda/12.0| 
-| | | | | | cuda/11.8 |
-| | | | | | cuda/12.0 |
 
 ---
 
