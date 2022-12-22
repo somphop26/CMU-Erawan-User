@@ -464,7 +464,7 @@ source https://slurm.schedmd.com/squeue.html#SECTION_JOB-STATE-CODES
 
     #!/bin/bash
     #SBATCH --job-name=mpi-job       # create a short name for your job
-    #SBATCH -p normal                # pritition name
+    #SBATCH -p cpu                # pritition name
     #SBATCH --nodes=2                # node count
     #SBATCH --ntasks=200             # number of tasks per node
     #SBATCH --cpus-per-task=1        # cpu-cores per task (>1 if multi-threaded tasks)
@@ -575,7 +575,7 @@ submit slurm
 
 ### Submit slurm on Jupyter 
 
-เข้าใช้งานบน web browser ระบุ URL: [http://10.110.0.11:8000](http://10.110.0.11:8000/) หรือ [http://erawan.cmu.ac.th:8000](http://erawan.cmu.ac.th:8000) แล้ว login เข้าระบบ
+เข้าใช้งานบน web browser ระบุ URL: [http://erawan.cmu.ac.th:8000](http://erawan.cmu.ac.th:8000) แล้ว login เข้าระบบ
 
 ![enter image description here](https://github.com/somphop26/CMU-Erawan-User/blob/main/imp/Screenshot%20from%202022-12-13%2021-48-37.png?raw=true)
 
