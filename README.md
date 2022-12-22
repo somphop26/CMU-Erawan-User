@@ -461,7 +461,7 @@ mpirun with hostfile
 
 #### ตัวอย่างการรันงานแบบ GPU Jobs
 
-โดยเนื้อหาจะระบุตัวแปร "--gpus=1" เพิ่มขึ้นมาเพื่อกำหนดให้งานใช้ GPU ตามจำนวนที่ต้องการ โดยในตัวอย่างระบุให้ใช้ GPU จำนวน 1 การ์ด 
+ให้ระบุตัวแปร "--gpus=1" เพิ่มขึ้นมาเพื่อกำหนดจำนวน GPU ที่ต้องการ โดยในตัวอย่างระบุให้ใช้ GPU จำนวน 1 การ์ด 
 
     #!/bin/bash
     #SBATCH --job-name=mnist         # create a short name for your job
@@ -472,9 +472,7 @@ mpirun with hostfile
     #SBATCH --time=01:00:00          # total run time limit (HH:MM:SS)
    
     #CUDA matrix multiplication
-    date
     ./mm_optimization
-    date    
 
 รัน
 
