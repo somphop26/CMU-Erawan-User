@@ -107,7 +107,7 @@ Compute node Local disk
 | PGI Compiler | nvhpc |
 | dl_poly | dl_poly_mpi |
 | lammps | lammps |
-| AMD | aocc/4.0.0 |
+| AMD | aocc |
 | Intel | intel |
 | Nvidia cuda toolkit | cuda/11.1 <br/> cuda/11.8 <br/> cuda/12.0 |
 
