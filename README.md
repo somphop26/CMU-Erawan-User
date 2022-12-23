@@ -419,12 +419,6 @@ Submit งานใช้ โดยใช้คำสั่ง %%sbatch แล�
 ![enter image description here](https://github.com/somphop26/CMU-Erawan-User/blob/main/imp/Screenshot%20from%202022-12-23%2012-05-55.png?raw=true)
 
 
-
-Running Jupyter on Slurm GPU Nodes
-[https://nero-docs.stanford.edu/jupyter-slurm.html](https://nero-docs.stanford.edu/jupyter-slurm.html)
-
-
-
 ### การรัน Singularity บน slurm
 
 ใช้งาน (รันโดย user)
