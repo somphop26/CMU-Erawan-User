@@ -399,7 +399,7 @@ NODELIST จะแสดงรายละเอียดสถานะต่�
 ![enter image description here](https://github.com/somphop26/CMU-Erawan-User/blob/main/imp/jupyter.png?raw=true)
 
 
-โหลด slurm-magic ก่อนใช้งานคำสั่ง slurm
+โหลด slurm-magic ก่อนใช้คำสั่ง Slurm
 
     %load_ext slurm_magic
 
@@ -420,7 +420,7 @@ Submit งานใช้ โดยใช้คำสั่ง %%sbatch แล�
   
 ตรวจสอบผลลัพธ์
 
-    cat jpjob.??.out
+    cat jpjob.<JOBID>.out
 
 ![enter image description here](https://github.com/somphop26/CMU-Erawan-User/blob/main/imp/Screenshot%20from%202022-12-13%2022-55-24.png?raw=true)
   
