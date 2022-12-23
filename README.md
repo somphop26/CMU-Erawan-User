@@ -73,7 +73,7 @@ Compute node Local disk
 | 3.2 Gurobi | 10.0 |
 | 3.3 GROMACS | 2022.4 |
 | 3.4 BLAST | 2.13.0 |
-| 3.5 LAMMPS | 202105027 |
+| 3.5 LAMMPS | 20210527 |
 | 3.6 LINGO | 19 |
 | 3.7 Quantum Espresso | 6.8 |
 | 3.8 Singularity | 3.7.1-5.1.ohpc.2.1 |
@@ -112,8 +112,9 @@ Compute node Local disk
 | Nvidia cuda toolkit | cuda/11.1 <br/> cuda/11.8 <br/> cuda/12.0 |
 
 
-### ตำแหน่งไฟล์ WRF และ WRF-Chem
+### WRF และ WRF-Chem
 
+    ตำแหน่งไฟล์ 
     /opt/ohpc/pub/apps/WRF/
     /opt/ohpc/pub/apps/WRF-Chem
     
@@ -204,12 +205,12 @@ Download : https://filezilla-project.org/download.php?platform=win64
 
 Slurm เป็นซอฟต์แวร์ Job scheduler มีหน้าที่ในการจัดลำดับงานในระบบ โดยหลักการทำงานของ Slurm คือผู้ใช้ต้องส่ง Job script ผ่านเครื่อง Login node เข้าไปต่อคิวใน Slurm เพื่อรอที่จะรันงาน เมื่อถึงคิว Slurm จะทำการส่งงานไปรันที่เครื่อง Compute node ตาม Partition ที่ท่านกำหนดในไฟล์ Job script เมื่อประมวลผลเสร็จ ผลลัพธ์จะเก็บอยู่ในตำแหน่งที่ท่านรัน
 
+ในระบบได้มีการแบ่ง Partition ดังนี้
 | Partition | CPU Core | GPU | Node | Time limit |
 |--|--:|--:|--|--|
 | gpu |     16  | 16 | compute[1-2] | 72 hours |
 | cpu |   240  |   | compute[1-2] | 72 hours |
 | short | 128  |  8 | compute3     | 24 hours |
-
 
 ผู้ใช้จะต้องเขียนไฟล์ Job script ขึ้นมาเพื่อส่งงานไปรันที่ Slurm เท่านั้น **ห้ามรีโมทไปรันที่เครื่องโดยตรง** เพราะจะส่งผลให้ระบบมีประสิทธิภาพการทำงานโดยรวมที่ไม่ดี ในไฟล์ Job script ท่านสามารถระบุความต้องการต่าง ๆ ได้ เช่น ระบุจำนวนทรัพยากรที่ต้องการ (CPU, GPU, RAM) ระบุระยะเวลาที่ใช้ในการรัน ระบุ Partition (Resource group) ที่ต้องการใช้งาน เป็นต้น
 
