@@ -387,10 +387,9 @@ NODELIST จะแสดงรายละเอียดสถานะต่�
 ---
 
 
-
 ### การ Submit Slurm บน Jupyterhub
 
-เข้าใช้งานบน web browser ระบุ URL: [https://erawan.cmu.ac.th:8000](http://erawan.cmu.ac.th:8000) แล้ว login เข้าระบบ
+เข้าใช้งานบน web browser ระบุ URL: [https://erawan.cmu.ac.th:8000](https://erawan.cmu.ac.th:8000) แล้ว login เข้าระบบ
 
 ![enter image description here](https://github.com/somphop26/CMU-Erawan-User/blob/main/imp/Screenshot%20from%202022-12-13%2021-48-37.png?raw=true)
 
@@ -404,7 +403,6 @@ NODELIST จะแสดงรายละเอียดสถานะต่�
 
     %load_ext slurm_magic
 
-  
 
 Submit งานใช้ โดยใช้คำสั่ง %%sbatch แล้วตามด้วย Job script ตามปกติ
 
