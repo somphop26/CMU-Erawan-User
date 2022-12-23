@@ -350,7 +350,7 @@ NODELIST จะแสดงรายละเอียดสถานะต่�
 
     #!/bin/bash
     #SBATCH --job-name=mpi-job       # create a short name for your job
-    #SBATCH -p cpu                # pritition name
+    #SBATCH -p cpu                   # pritition name
     #SBATCH --ntasks=200             # number of tasks per node
     #SBATCH --cpus-per-task=1        # cpu-cores per task (>1 if multi-threaded tasks)
     #SBATCH --time=00:05:00          # total run time limit (HH:MM:SS)
