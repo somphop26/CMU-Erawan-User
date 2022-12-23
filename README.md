@@ -38,7 +38,7 @@ Compute node Local disk
 /scratch.local
 
       
-### Software
+### Softwareตัวแปรที่ใช้กำหนดคือ
 -   OS: Rocky linux 8.7
 -   OpenHPC 2.4
 
@@ -343,7 +343,6 @@ NODELIST จะแสดงรายละเอียดสถานะต่�
 
 #### การรันงานแบบ MPI Jobs
 
-
 จากเดิมการรัน mpi จะรันคำสั่งด้านล่าง ซึ่งจะกำหนดจำนวน tasks โดยใช้ Option -np [ตามด้วยจำนวน tasks ที่ต้องการ]
 
     mpirun -np 200 -hostfile hosts ./myprog.o
@@ -390,50 +389,7 @@ NODELIST จะแสดงรายละเอียดสถานะต่�
 
 
 
-
-
-
-## ตัวอย่างการรันซอฟต์แวร์ต่าง ๆ โดย Submit ผ่าน Slurm
-
-### Run python in slurm
-source [https://wandb.ai/wandb/common-ml-errors/reports/How-To-Use-GPU-with-PyTorch---VmlldzozMzAxMDk](https://wandb.ai/wandb/common-ml-errors/reports/How-To-Use-GPU-with-PyTorch---VmlldzozMzAxMDk)
-
-
-สร้างไฟล์สำหรับรัน python
-
-    vi runPytorch.py
-    --------------------------------------------
-    import torch
-    X_train = torch.FloatTensor([0., 1., 2.])
-    X_train = X_train.cuda()
-    print(X_train)
-    
-ทดลองรันสคริปต์
-
-    python runPytorch.py
-   
-**ผลลัพธ์ที่ได้จะ Error เนื่องจากเครื่อง Scheduler node ไม่มี GPU จะต้องส่งคำสั่งไปรันที่เครื่อง compute
-
-สร้างไฟล์ Job script
-
-    vi slurm-pytorch
-    ----------------------------------------------
-    #!/bin/bash
-    #SBATCH --gpus=1                # total number of GPUs
-    #SBATCH -p short                # specific partition (compute, memory, gpu)
-    #SBATCH -o testpytorch.%j.out   # Name of stdout output file (%j expands to jobId)
-    #SBATCH -J testpytorch          # Job name
-    #SBATCH -N 1                    # Total number of nodes requested
-       
-    python runPytorch.py
-
-submit slurm
-
-    sbatch slurm-pytorch
-
-
-
-### Submit slurm on Jupyter 
+### การ Submit Slurm บน Jupyterhub
 
 เข้าใช้งานบน web browser ระบุ URL: [http://erawan.cmu.ac.th:8000](http://erawan.cmu.ac.th:8000) แล้ว login เข้าระบบ
 
