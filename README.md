@@ -200,7 +200,6 @@ Download : https://filezilla-project.org/download.php?platform=win64
 
 ---
 
-
 ## วิธีการใช้งาน Slurm
 
 Slurm เป็นซอฟต์แวร์ Job scheduler มีหน้าที่ในการจัดลำดับงานในระบบ โดยหลักการทำงานของ Slurm คือผู้ใช้ต้องส่ง Job script ผ่านเครื่อง Login node เข้าไปต่อคิวใน Slurm เพื่อรอที่จะรันงาน เมื่อถึงคิว Slurm จะทำการส่งงานไปรันที่เครื่อง Compute node ตาม Partition ที่ท่านกำหนดในไฟล์ Job script เมื่อประมวลผลเสร็จ ผลลัพธ์จะเก็บอยู่ในตำแหน่งที่ท่านรัน
@@ -411,11 +410,11 @@ Submit งานใช้ โดยใช้คำสั่ง %%sbatch แล�
 
     %%sbatch
     #!/bin/bash
-    #SBATCH --gpus=1        # total number of GPUs
-    #SBATCH -p normal       # specific partition (compute, memory, gpu)
-    #SBATCH -o jpjob.%j.out # Name of stdout output file (%j expands to jobId)
-    #SBATCH -J jptest       # Job name
-    #SBATCH -N 1            # Total number of nodes requested
+    #SBATCH --gpus=1         # total number of GPUs
+    #SBATCH -p gpu           # specific partition (compute, memory, gpu)
+    #SBATCH -o jpjob.%j.out  # Name of stdout output file (%j expands to jobId)
+    #SBATCH -J jptest        # Job name
+    #SBATCH -N 1             # Total number of nodes requested
     
     #CUDA matrix multiplication
     ./mm_optimization
