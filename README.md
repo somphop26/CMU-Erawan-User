@@ -408,20 +408,17 @@ Submit งานใช้ โดยใช้คำสั่ง %%sbatch แล�
 
     %%sbatch
     #!/bin/bash
-    #SBATCH --gpus=1                 # total number of GPUs
-    #SBATCH -p gpu                   # specific partition (compute, memory, gpu)
     #SBATCH -o mytest.%j.out         # Name of stdout output file (%j expands to jobId)
     #SBATCH --job-name=mytest        # Job name
-    #SBATCH -N 1                     # Total number of nodes requested
     
     module load anaconda3
-    conda activate test-env
-    python mytest.py
+    conda activate test
+    python program.py
 
-  
-ตรวจสอบผลลัพธ์
 
-    cat mytest.<JOBID>.out
+![enter image description here](https://github.com/somphop26/CMU-Erawan-User/blob/main/imp/jupyter.png?raw=true)
+
+
 
 Running Jupyter on Slurm GPU Nodes
 [https://nero-docs.stanford.edu/jupyter-slurm.html](https://nero-docs.stanford.edu/jupyter-slurm.html)
