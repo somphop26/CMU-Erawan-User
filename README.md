@@ -421,15 +421,6 @@ Submit งานใช้ โดยใช้คำสั่ง %%sbatch แล�
 
 ### การรัน Singularity บน slurm
 
-ใช้งาน (รันโดย user)
-
-    module load singularity
-
-ทดลองรันที่เครื่อง compute
-
-    singularity run --nv /opt/ohpc/pub/apps/singularity/cp2k_v9.1.0.sif mpirun -np 200  binder.sh cp2k.psmp -i H2O-dft-ls.NREP2.inp
-
-  
 เขียนไฟล์ Job script
 
     vi runCP2K
