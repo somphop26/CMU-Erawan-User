@@ -428,16 +428,17 @@ Submit งานใช้ โดยใช้คำสั่ง %%sbatch แล�
 Running Jupyter on Slurm GPU Nodes
 [https://nero-docs.stanford.edu/jupyter-slurm.html](https://nero-docs.stanford.edu/jupyter-slurm.html)
 
-  
 
-### ตัวอย่างการรัน Singularity
+
+### การรัน Singularity บน slurm
+
 ใช้งาน (รันโดย user)
 
     module load singularity
 
 ทดลองรันที่เครื่อง compute
 
-    singularity run --nv /opt/ohpc/pub/apps/singularity/cp2k_v9.1.0.sif mpirun -np 1  binder.sh cp2k.psmp -i H2O-dft-ls.NREP2.inp
+    singularity run --nv /opt/ohpc/pub/apps/singularity/cp2k_v9.1.0.sif mpirun -np 200  binder.sh cp2k.psmp -i H2O-dft-ls.NREP2.inp
 
   
 เขียนไฟล์ Job script
@@ -445,111 +446,18 @@ Running Jupyter on Slurm GPU Nodes
     vi runCP2K
     —-------------------------------------------------------------------
     #!/bin/bash
-    #SBATCH --gpus=1       # total number of GPUs
-    #SBATCH -p short       # specific partition (compute, memory, gpu)
-    #SBATCH -o cp2k.%j.out # Name of stdout output file (%j expands to jobId)
-    #SBATCH -J cp2kgpu     # Job name
-    #SBATCH -N 1           # Total number of nodes requested
-    
+    #SBATCH --gpus=1                # total number of GPUs
+    #SBATCH --job-name= cp2kgpu     # create a short name for your job
+    #SBATCH -p gpu                  # specific partition (compute, memory, gpu)
+    #SBATCH -o cp2k.%j.out          # Name of stdout output file (%j expands to jobId)
+    #SBATCH --ntasks=200            # number of tasks per node
+  
     #CUDA matrix multiplication
     
-    singularity run --nv /opt/ohpc/pub/apps/singularity/cp2k_v9.1.0.sif mpirun -np 1  binder.sh cp2k.psmp -i H2O-dft-ls.NREP2.inp
+    singularity run --nv /opt/ohpc/pub/apps/singularity/cp2k_v9.1.0.sif prun  binder.sh cp2k.psmp -i H2O-dft-ls.NREP2.inp
 
   
 รัน Job script ที่เครื่อง erawan
 
     sbatch runCP2K
-
-### OpenFoam Example
-
-ใช้ enviroment
-
-    source /opt/ohpc/pub/apps/openfoam/OpenFOAM-10/etc/bashrc
-
-คัดลอกสคริปต์ตัวอย่าง
-
-    cp -r /opt/ohpc/pub/apps/openfoam/OpenFOAM-10/tutorials/incompressible/icoFoam/cavity ~/openfoam
-
-สร้างไฟล์ job script
-
-    vi slurm-openfoam.sh 
-    ----------------------------------------------------------------------------
-    #!/bin/bash
-    #SBATCH -J openfoam           # Job name
-    #SBATCH -o jobopenfoam.%j.out # Name of stdout output file (%j expands to jobId)
-    #SBATCH -N 1                  # Total number of nodes requested
-    #SBATCH -n 8                  # Total number of mpi tasks requested
-    #SBATCH -t 01:30:00           # Run time (hh:mm:ss) - 1.5 hours
-
-    ~/openfoam/Allrun
-    cd ~/openfoam/cavity/
-    blockMesh
-    icoFoam
-
-
-รัน
-
-    sbatch slurm-openfoam.sh
-
-
-
-### Run Jupyter Notebook 
-
-**วิธีนี้จะใช้เฉพาะกรณีที่ท่านต้องการทดสอบสคริปต์ Python ของท่านเท่านั้นเมื่อใช้เสร็จหรือเลิกใช้งานควร สั่ง "scancel [JOBID]" เพื่อให้ระบบคืนทรัพยากรเนื่องจากวิธีด้านล่างนี้จะจองทรัพยากรไว้ตามระยะเวลาที่ท่านกำหนด
-
-โหลดโมดูล anaconda3
-
-    module load anaconda3
-    
-สร้าง enviroment ของท่าน
-
-    conda create -n [enviroment name]
-    conda init bash 
-    conda config --set auto_activate_base False #กำหนด ให้ไม่ auto activate base environment
-    
-เช้าใช้งาน enviroment
-
-    conda activate [enviroment name]
-    
-ติดตั้ง jupyterlib ใน enviroment
-
-    conda install -c conda-forge jupyterlab
-
-
-### Running Jupyter on Slurm GPU Nodes
-https://nero-docs.stanford.edu/jupyter-slurm.html
-
-สร้างสคริปต์ jupyter.job
-
-    #!/bin/bash
-    #SBATCH --job-name=jupyter
-    #SBATCH --gpus=1
-    #SBATCH --time=02:00:00
- 
-    source /home/${USER}/.bashrc
-    conda activate [enviroment name]
-    cat /etc/hosts
-    jupyter lab --ip=0.0.0.0 --port=8888
-
-** พอร์ต 8888 คือกำหนดว่าให้ jupyterlab รันที่พอร์ตไหน ให้เปลี่ยนไม่ให้ซ้ำ ตั้งสูง ๆ ไว้เพราะพอร์ตหมายเลขน้อย ๆ อาจจะไปชนกับ service อื่น ๆ โดยเฉพาะที่ต่ำกว่า 1024 
-
-submit
-
-    sbatch jupyter.job
-
-เมื่อ Job รัน (R) แล้ว  ให้ดู output ว่าไปรันที่เครื่องไหน
-
-ทำ ssh tunnel ไปยังพอร์ตที่เรากำหนดให้ Jupyter ตอน submit job
-
-    ssh -L 9999:10.98.4.XX:8888 cmu@erawan.cmu.ac.th
-
-ข้างบนเป็นการกำหนดให้ Local port 9999 เชื่อมไปยังเครื่อง 10.98.4.XX:8888
-
-*อ่านเพิ่มเติม https://www.tunnelsup.com/how-to-create-ssh-tunnels
-
-เปิดหน้าเว็บไปที่ http://localhost:9999 เข้าไปดู token ใน output slurm
-
-
-
-
 
