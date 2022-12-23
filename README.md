@@ -408,22 +408,20 @@ Submit งานใช้ โดยใช้คำสั่ง %%sbatch แล�
 
     %%sbatch
     #!/bin/bash
-    #SBATCH --gpus=1         # total number of GPUs
-    #SBATCH -p gpu           # specific partition (compute, memory, gpu)
-    #SBATCH -o jpjob.%j.out  # Name of stdout output file (%j expands to jobId)
-    #SBATCH -J jptest        # Job name
-    #SBATCH -N 1             # Total number of nodes requested
+    #SBATCH --gpus=1                 # total number of GPUs
+    #SBATCH -p gpu                   # specific partition (compute, memory, gpu)
+    #SBATCH -o mytest.%j.out         # Name of stdout output file (%j expands to jobId)
+    #SBATCH --job-name=mytest        # Job name
+    #SBATCH -N 1                     # Total number of nodes requested
     
-    #CUDA matrix multiplication
-    ./mm_optimization
+    module load anaconda3
+    conda activate test-env
+    python mytest.py
 
   
 ตรวจสอบผลลัพธ์
 
-    cat jpjob.<JOBID>.out
-
-![enter image description here](https://github.com/somphop26/CMU-Erawan-User/blob/main/imp/Screenshot%20from%202022-12-13%2022-55-24.png?raw=true)
-  
+    cat mytest.<JOBID>.out
 
 Running Jupyter on Slurm GPU Nodes
 [https://nero-docs.stanford.edu/jupyter-slurm.html](https://nero-docs.stanford.edu/jupyter-slurm.html)
