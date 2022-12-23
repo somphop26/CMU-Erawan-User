@@ -79,7 +79,7 @@ Compute node Local disk
 | 3.8 Singularity | 3.7.1-5.1.ohpc.2.1 |
 | 3.9 ABINIT | 9.6.2 |
 | 3.10 CP2K | 9.1.0 |
-| 3.11 DL_POLY | 4 |
+| 3.11 DL_POLY | 4 |tate 
 | 3.12 FreeSurfer | 7.3.2 |
 | 3.13 NAMD | 2.14 |
 | 3.14 NWChem | 7.0.2 |
@@ -286,6 +286,7 @@ NODELIST จะแสดงรายละเอียดสถานะต่�
     scontrol show partition
 
 ออกจากสถานะ “DRAIN” or “Down”  
+
     scontrol update NodeName=compute[1-3] State=RESUME
 
 
