@@ -416,7 +416,7 @@ Submit งานใช้ โดยใช้คำสั่ง %%sbatch แล�
     python program.py
 
 
-![enter image description here](https://github.com/somphop26/CMU-Erawan-User/blob/main/imp/jupyter.png?raw=true)
+![enter image description here](https://github.com/somphop26/CMU-Erawan-User/blob/main/imp/Screenshot%20from%202022-12-23%2012-05-55.png?raw=true)
 
 
 
