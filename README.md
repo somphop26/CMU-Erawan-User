@@ -285,6 +285,9 @@ NODELIST จะแสดงรายละเอียดสถานะต่�
 
     scontrol show partition
 
+ออกจากสถานะ “DRAIN” or “Down”  
+    scontrol update NodeName=compute[1-3] State=RESUME
+
 
 ### การรัน Slurm ในแบบต่าง ๆ
 
