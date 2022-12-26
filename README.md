@@ -387,6 +387,25 @@ Job Reason Codes (NODELIST(RESON)) จะแสดงรายละเอีย
 ---
 
 
+### สร้างสภาพแวดล้อม conda สำหรับงานที่ใช้ Python
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### การ Submit Slurm บน Jupyterhub
 
 เข้าใช้งานบน web browser ระบุ URL: [https://erawan.cmu.ac.th:8000](https://erawan.cmu.ac.th:8000) แล้ว login เข้าระบบ
