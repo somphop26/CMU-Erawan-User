@@ -405,9 +405,12 @@ Submit งานใช้ โดยใช้คำสั่ง %%sbatch แล�
 
     %%sbatch
     #!/bin/bash
+    #SBATCH --gpus=1                 # total number of GPUs    
+    #SBATCH -p gpu                   # specific partition (compute, memory, gpu)
     #SBATCH -o mytest.%j.out         # Name of stdout output file (%j expands to jobId)
     #SBATCH --job-name=mytest        # Job name
     
+    # CUDA matrix multiplication
     module load anaconda3
     conda activate test
     python program.py
