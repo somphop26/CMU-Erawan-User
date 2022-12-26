@@ -389,20 +389,32 @@ Job Reason Codes (NODELIST(RESON)) จะแสดงรายละเอีย
 
 ### สร้างสภาพแวดล้อม conda สำหรับงานที่ใช้ Python
 
+สร้างสภาพแวดล้อม python เวอร์ชัน 3.7
 
+    module load anaconda3
+    conda create -n test python=3.7
 
+กำหนดไม่ให้ค่าเริ่มต้นใช้งานสภาพแวดล้อม base และกำหนด shell ในสภาพแวดล้อมเป็น bash จากนั้น logout และ Login ใหม่
 
+    conda config --set auto_activate_base False
+    conda init bash
+    exit
+    ssh [username]@erawan.cmu.ac.th
 
+เข้าใช้งานสภาพแวดล้อมที่สร้าง 
 
+    conda activate test
+    python --version
+    
+ติดตั้ง software ในสภาพแวดล้อม
+    
+    conda install numpy
+    หรือ
+    pip3 install numpy
 
+หากต้องการลบสภาพแวดล้อมใช้คำสั่ง
 
-
-
-
-
-
-
-
+    conda env remove -n test
 
 
 
