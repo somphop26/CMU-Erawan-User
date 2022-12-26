@@ -388,12 +388,12 @@ NODELIST จะแสดงรายละเอียดสถานะต่�
 
 เข้าใช้งานบน web browser ระบุ URL: [https://erawan.cmu.ac.th:8000](https://erawan.cmu.ac.th:8000) แล้ว login เข้าระบบ
 
-![enter image description here](https://github.com/somphop26/CMU-Erawan-User/blob/main/imp/Screenshot%20from%202022-12-13%2021-48-37.png?raw=true)
+![enter image description here](https://github.com/somphop26/CMU-Erawan-User/blob/main/imp/Screenshot%20from%202022-12-26%2010-50-19.png?raw=true)
 
 
 คลิก + > เลือก Notebook
 
-![enter image description here](https://github.com/somphop26/CMU-Erawan-User/blob/main/imp/jupyter.png?raw=true)
+![enter image description here](https://github.com/somphop26/CMU-Erawan-User/blob/main/imp/Screenshot%20from%202022-12-26%2010-51-17.png?raw=true)
 
 
 โหลด slurm-magic ก่อนใช้คำสั่ง Slurm
@@ -413,7 +413,7 @@ Submit งานใช้ โดยใช้คำสั่ง %%sbatch แล�
     python program.py
 
 
-![enter image description here](https://github.com/somphop26/CMU-Erawan-User/blob/main/imp/Screenshot%20from%202022-12-23%2012-05-55.png?raw=true)
+![enter image description here](https://github.com/somphop26/CMU-Erawan-User/blob/main/imp/Screenshot%20from%202022-12-26%2010-49-30.png?raw=true)
 
 
 ### การรัน Singularity บน slurm
