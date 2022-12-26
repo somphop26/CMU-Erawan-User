@@ -221,6 +221,7 @@ Slurm เป็นซอฟต์แวร์ Job scheduler มีหน้า�
 - การ Submit งานที่ใช้ GPU บางงานใช้ GPU เป็นหลัก ให้กำหนด --cpus-per-task=1 หรือไม่กำหนด เพราะค่า default คือ 1 และขอให้มั่นใจว่าโค้ดของท่านไม่แตก thread
 
 
+
 ### คำสั่งพื้นฐานสำหรับใช้งาน Slurm มีดังนี้
 
 Submit Job script ไปต่อคิวที่ Slurm เพื่อรอประมวลผล
@@ -241,7 +242,7 @@ Job Reason Codes (NODELIST(RESON)) จะแสดงรายละเอีย
 - หากในคิวนั้นมีการประมวลผลจะขึ้นชื่อเครื่องที่ใช้ประมวลผล compute1..3
 - เมื่อมีการขอทรัพยากรเกินกว่าจำนวนที่มีอยู่ใน Partition จะขึ้นสถานะ PartitionConfig
 - อยู่ระหว่างรอทรัพยากรว่างเพียงพอต่องานที่รันจะขึ้นสถานะ Resources
-- อยู่ระหว่างรอคิวที่มีลำดับความสำคัญสูงกว่าประมวลผลจะขึ้นสถานะ Priority
+- อยู่ระหว่างรอคิวโดยมีจัดลำดับคิวตาม scheduling algorithm (SchedulerType=sched/backfill) จะขึ้นสถานะ Priority
 
 อ่านเพิ่มเติมที่ : https://slurm.schedmd.com/squeue.html#SECTION_JOB-REASON-CODES
 
@@ -302,7 +303,7 @@ Job Reason Codes (NODELIST(RESON)) จะแสดงรายละเอีย
     #SBATCH --nodes=1                # node count
     #SBATCH --ntasks=1               # total number of tasks across all nodes
     #SBATCH --cpus-per-task=1        # cpu-cores per task (>1 if multi-threaded tasks)
-    #SBATCH --time=00:01:00          # total run time limit (HH:MM:SS)
+    #SBATCH --time=00:20:00          # total run time limit (HH:MM:SS)
 
     module purge
     Rscript myscript.R
@@ -353,7 +354,7 @@ Job Reason Codes (NODELIST(RESON)) จะแสดงรายละเอีย
     #SBATCH -p cpu                   # pritition name
     #SBATCH --ntasks=200             # number of tasks per node
     #SBATCH --cpus-per-task=1        # cpu-cores per task (>1 if multi-threaded tasks)
-    #SBATCH --time=00:05:00          # total run time limit (HH:MM:SS)
+    #SBATCH --time=00:20:00          # total run time limit (HH:MM:SS)
 
     module purge
     module load intel
@@ -387,9 +388,9 @@ Job Reason Codes (NODELIST(RESON)) จะแสดงรายละเอีย
 ---
 
 
-### สร้างสภาพแวดล้อม conda สำหรับงานที่ใช้ Python
+### การสร้างสภาพแวดล้อม conda สำหรับงานที่ใช้ Python
 
-สร้างสภาพแวดล้อม python เวอร์ชัน 3.7
+สร้างสภาพแวดล้อม python 
 
     module load anaconda3
     conda create -n test python=3.7
@@ -416,7 +417,7 @@ Job Reason Codes (NODELIST(RESON)) จะแสดงรายละเอีย
 
     conda env remove -n test
 
-
+---
 
 ### การ Submit Slurm บน Jupyterhub
 
@@ -443,6 +444,7 @@ Submit งานใช้ โดยใช้คำสั่ง %%sbatch แล�
     #SBATCH -p gpu                   # specific partition (compute, memory, gpu)
     #SBATCH -o mytest.%j.out         # Name of stdout output file (%j expands to jobId)
     #SBATCH --job-name=mytest        # Job name
+    #SBATCH --time=10:00:00 
     
     # CUDA matrix multiplication
     module load anaconda3
