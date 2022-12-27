@@ -443,7 +443,7 @@ Submit งานใช้ โดยใช้คำสั่ง %%sbatch แล�
     #SBATCH --job-name=mytest        # Job name
     #SBATCH --time=10:00:00 
     
-    /home/${USER}/.bashrc
+    source /home/${USER}/.bashrc
     conda activate test
     python program.py
 
