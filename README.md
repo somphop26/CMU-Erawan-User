@@ -342,14 +342,14 @@ Job Reason Codes (NODELIST(RESON)) จะแสดงรายละเอีย
 
 จากเดิมการรัน mpi จะรันคำสั่งด้านล่าง ซึ่งจะกำหนดจำนวน tasks โดยใช้ Option -np [ตามด้วยจำนวน tasks ที่ต้องการ]
 
-    mpirun -np 200 -hostfile hosts ./myprog.o
+    mpirun -np 192 -hostfile hosts ./myprog.o
     
 เมื่อ Submit ผ่าน Slurm ให้กำหนดที่ตัวแปร "--ntasks=[จำนวน tasks ที่ต้องการ]" และใช้คำสั่ง prun แทนการสั่งแบบเดิม
 
     #!/bin/bash
     #SBATCH --job-name=mpi-job       # create a short name for your job
     #SBATCH -p cpu                   # pritition name
-    #SBATCH --ntasks=200             # number of tasks per node
+    #SBATCH --ntasks=192             # number of tasks per node
     #SBATCH --cpus-per-task=1        # cpu-cores per task (>1 if multi-threaded tasks)
     #SBATCH --time=00:20:00          # total run time limit (HH:MM:SS)
 
@@ -371,7 +371,7 @@ Job Reason Codes (NODELIST(RESON)) จะแสดงรายละเอีย
     #SBATCH --job-name=mnist         # create a short name for your job
     #SBATCH --nodes=1                # node count
     #SBATCH --ntasks=1               # total number of tasks across all nodes
-    #SBATCH --cpus-per-task=1        # cpu-cores per task (>1 if multi-threaded tasks)
+    #SBATCH --cpus-per-task=4        # cpu-cores per task (>1 if multi-threaded tasks)
     #SBATCH --gpus=1                 # total number of GPUs
     #SBATCH --time=01:00:00          # total run time limit (HH:MM:SS)
    
