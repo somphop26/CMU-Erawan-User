@@ -314,7 +314,9 @@ Job Reason Codes (NODELIST(RESON)) จะแสดงรายละเอีย
 
 #### แบบ Multithreaded Jobs
 
-งานที่เป็น multithreaded ขอให้ระบุพารามิเตอร์ --cpus-per-task= โดยกำหนดจำนวนเท่ากับจำนวนเธรดที่ต้องการแล้วใช้ตัวแปร $SLURM_CPUS_PER_TASK ไประบุในพารามิเตอร์ของคำสั่งดังตัวอย่างต่อไปนี้
+งานที่เป็น Multithreaded ขอให้ระบุพารามิเตอร์ --cpus-per-task= โดยกำหนดจำนวนเท่ากับจำนวนเธรดที่ต้องการแล้วใช้ตัวแปร $SLURM_CPUS_PER_TASK ไประบุในพารามิเตอร์ของคำสั่ง 
+
+ดังตัวอย่างต่อไปนี้
 
     #!/bin/bash
     #SBATCH --job-name=multithread   # create a short name for your job
