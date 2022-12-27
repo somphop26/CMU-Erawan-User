@@ -179,7 +179,7 @@ Download : https://filezilla-project.org/download.php?platform=win64
 ระบุ 
 
 - Host : erawan.cmu.ac.th
-- Username : user[]
+- Username : user
 - Password :  
 - Port : 22
 
