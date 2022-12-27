@@ -32,7 +32,7 @@
 -   refseq_rna
 -   swissprot
 
-Compute node Local disk **scratch**
+#### Compute node Local disk **scratch**
 
 /scratch.local
 
