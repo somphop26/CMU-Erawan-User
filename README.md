@@ -320,7 +320,7 @@ JOB REASON CODE (NODELIST(REASON)) จะแสดงรายละเอีย
 
 งานที่เป็น Multithreaded ขอให้ระบุพารามิเตอร์ --cpus-per-task= โดยกำหนดจำนวนเท่ากับจำนวนเธรดที่ต้องการแล้วใช้ตัวแปร $SLURM_CPUS_PER_TASK ไประบุในพารามิเตอร์ของคำสั่ง 
 
-ดังตัวอย่างต่อไปนี้
+ดังตัวอย่างการรันซอฟต์แวร์ Gromacs แบบ Multithreaded
 
     #!/bin/bash
     #SBATCH --job-name=multithread   # create a short name for your job
@@ -329,10 +329,9 @@ JOB REASON CODE (NODELIST(REASON)) จะแสดงรายละเอีย
     #SBATCH --cpus-per-task=8        # cpu-cores per task (>1 if multi-threaded tasks)
     #SBATCH --time=00:15:00          # maximum time needed (HH:MM:SS)
     
-    # ตัวอย่างคำสั่งการรันซอฟต์แวร์ Gromacs แบบ Multithreaded Job
     module load gromacs_gpu
     gmx mdrun -ntomp $SLURM_CPUS_PER_TASK -v -noconfout -nsteps 5000 -s  1536/topol.tpr
-    bwa mem -t $SLURM_CPUS_PER_TASK 
+
 
 รัน 
 
@@ -450,12 +449,12 @@ Submit งานใช้ โดยใช้คำสั่ง %%sbatch แล�
     #SBATCH --job-name=mytest        # Job name
     #SBATCH --time=10:00:00 
     
-    # ตัวอย่างการรันโค้ดไพธอนด้วยใช้สภาพแวดล้อม conda
     source /home/${USER}/.bashrc
     conda activate test
     python program.py
     python --version
 
+จากตัวอย่าง Job script เป็นการรันโค้ดไพธอนด้วยใช้สภาพแวดล้อม conda
 
 ![enter image description here](https://github.com/somphop26/CMU-Erawan-User/blob/main/imp/Screenshot%20from%202022-12-27%2010-08-07.png?raw=true)
 
@@ -474,8 +473,9 @@ Submit งานใช้ โดยใช้คำสั่ง %%sbatch แล�
     #SBATCH --ntasks=200            # number of tasks per node
     #SBATCH --time=05:00:00 
     
-    # ตัวอย่างคำสั่งการรันซอฟต์แวร์ CP2K ผ่าน singularity
     singularity run --nv /opt/ohpc/pub/apps/singularity/cp2k_v9.1.0.sif prun  binder.sh cp2k.psmp -i H2O-dft-ls.NREP2.inp
+
+จากตัวอย่าง Job script เป็นการรันซอฟต์แวร์ CP2K ผ่าน singularity
 
   
 รัน Job script ที่เครื่อง erawan
