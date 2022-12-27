@@ -463,7 +463,8 @@ Submit งานใช้ โดยใช้คำสั่ง %%sbatch แล�
     #SBATCH -p gpu                  # specific partition (compute, memory, gpu)
     #SBATCH -o cp2k.%j.out          # Name of stdout output file (%j expands to jobId)
     #SBATCH --ntasks=200            # number of tasks per node
-  
+    #SBATCH --time=05:00:00 
+    
     singularity run --nv /opt/ohpc/pub/apps/singularity/cp2k_v9.1.0.sif prun  binder.sh cp2k.psmp -i H2O-dft-ls.NREP2.inp
 
   
