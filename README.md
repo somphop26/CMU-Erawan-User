@@ -325,7 +325,7 @@ JOB REASON CODE (NODELIST(REASON)) จะแสดงรายละเอีย
     #SBATCH --cpus-per-task=8        # cpu-cores per task (>1 if multi-threaded tasks)
     #SBATCH --time=00:15:00          # maximum time needed (HH:MM:SS)
     
-    # ตัวอย่างการรันซอฟต์แวร์ Gromacs แบบ Multithreaded Job
+    # ตัวอย่างคำสั่งการรันซอฟต์แวร์ Gromacs แบบ Multithreaded Job
     module load gromacs_gpu
     gmx mdrun -ntomp $SLURM_CPUS_PER_TASK -v -noconfout -nsteps 5000 -s  1536/topol.tpr
     bwa mem -t $SLURM_CPUS_PER_TASK 
@@ -470,7 +470,7 @@ Submit งานใช้ โดยใช้คำสั่ง %%sbatch แล�
     #SBATCH --ntasks=200            # number of tasks per node
     #SBATCH --time=05:00:00 
     
-    # ตัวอย่างการรันซอฟต์แวร์ cp2k ผ่าน singularity
+    # ตัวอย่างคำสั่งการรันซอฟต์แวร์ CP2K ผ่าน singularity
     singularity run --nv /opt/ohpc/pub/apps/singularity/cp2k_v9.1.0.sif prun  binder.sh cp2k.psmp -i H2O-dft-ls.NREP2.inp
 
   
