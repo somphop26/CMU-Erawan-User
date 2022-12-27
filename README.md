@@ -331,9 +331,7 @@ Options นอกเหนือจากนี้ได้อธิบายใ
     #SBATCH --cpus-per-task=8        # cpu-cores per task (>1 if multi-threaded tasks)
     #SBATCH --time=00:15:00          # maximum time needed (HH:MM:SS)
     
-    # ตัวอย่างคำสั่งการรันซอฟNunnapus Moungmingsuk
-ตัวแปร --time=ระยะเวลาที่ใช้รันงาน  มีผลต่อการจัดลำดับความสำคัญของงาน เพื่อไม่ให้ CPU-core ว่างในระหว่างที่มีคิวรอ CPU ให้เพียงพอกับงานนั้น ตัวจัดลำดับงานจะคำนวณว่าสามารถหยิบงานใดที่สามารถนำมารันก่อนโดยที่ไม่กระทบกับงานที่รอคิวอยู่ หากมีตัวจัดลำดับงานก็จะหยิบงานนั้นมารันก่อนแทนที่จะปล่อยให้ CPU-core ว่างอยู่เฉย ๆ
-ท่านควรระบุเวลาให้ใกล้เคียงความเป็นจริงที่ท่านใช้รันที่สุดเพื่อระบบจะได้จัดสรรลำดับความสำคัญให้ท่าน หากไม่ระบุค่าเริ่มต้นจะเป็นค่า Timelimit ของ Partition ที่ท่านใช้งานต์แวร์ Gromacs แบบ Multithreaded Job
+    # ตัวอย่างคำสั่งการรันซอฟต์แวร์ Gromacs แบบ Multithreaded Job
     module load gromacs_gpu
     gmx mdrun -ntomp $SLURM_CPUS_PER_TASK -v -noconfout -nsteps 5000 -s  1536/topol.tpr
     bwa mem -t $SLURM_CPUS_PER_TASK 
