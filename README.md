@@ -446,9 +446,10 @@ Submit งานใช้ โดยใช้คำสั่ง %%sbatch แล�
     source /home/${USER}/.bashrc
     conda activate test
     python program.py
+    python --version
 
 
-![enter image description here](https://github.com/somphop26/CMU-Erawan-User/blob/main/imp/Screenshot%20from%202022-12-26%2010-49-30.png?raw=true)
+![enter image description here](https://github.com/somphop26/CMU-Erawan-User/blob/main/imp/Screenshot%20from%202022-12-27%2010-08-07.png?raw=true)
 
 
 ### การรัน Singularity บน slurm
