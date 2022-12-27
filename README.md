@@ -33,12 +33,12 @@
 -   refseq_rna
 -   swissprot
 
-Compute node Local disk
+Compute node Local disk **scratch**
 
 /scratch.local
 
       
-### Softwareตัวแปรที่ใช้กำหนดคือ
+### Software 
 -   OS: Rocky linux 8.7
 -   OpenHPC 2.4
 
@@ -146,7 +146,7 @@ Compute node Local disk
 | C++ | g++ | icpx | clang | nvc++ (pgcc+) | - |
 | Fortran | gfortran | ifx | flang | nvfortran (pgfortran) | - |
 | Cuda (nvcc) | - | - | - | - | nvcc |
-| Module load | - | intel | aocc | nvhpc | cuda/11.1 <br/> cuda/11.8 <br/> cuda/12.0| 
+| Module load | gnu9 | intel | aocc | nvhpc | cuda/11.1 <br/> cuda/11.8 <br/> cuda/12.0| 
 
 ---
 
@@ -179,7 +179,7 @@ Download : https://filezilla-project.org/download.php?platform=win64
 ระบุ 
 
 - Host : erawan.cmu.ac.th
-- Username : user[01-50]
+- Username : user[]
 - Password :  
 - Port : 22
 
@@ -218,7 +218,8 @@ Slurm เป็นซอฟต์แวร์ Job scheduler มีหน้า�
 3. ทำการ submit งานผ่าน Slurm batch หรือ interactive jobs จากเครื่อง login node (**ห้ามรันที่เครื่อง login node**)
 - การ Submit งานที่ใช้ thread ให้กำหนด #SBATCH --cpus-per-task=  ตามจำนวน threads ที่ใช้งาน
 - การ Submit งานที่เป็น MPI ให้กำหนด #SBATCH --ntasks=  ตามจำนวน Process ที่ต้องการ 
-- การ Submit งานที่ใช้ GPU บางงานใช้ GPU เป็นหลัก ให้กำหนด --cpus-per-task=1 หรือไม่กำหนด เพราะค่า default คือ 1 และขอให้มั่นใจว่าโค้ดของท่านไม่แตก thread
+- การ Submit งานที่ใช้ GPU เป็นหลัก ที่ partition GPU ให้กำหนด --cpus-per-task ตามความเหมาะสม หากงานไม่ได้แตก thread ให้กำหนดเป็น 1 หากแตก thread กำหนดได้ระหว่าง 2-4 threads เพื่อแบ่งปันคอร์ที่เหลือกับการ์ดใบอื่น ๆ จะได้ใช้งานระบบได้อย่างเต็มความสามารถ 
+
 
 
 
@@ -284,10 +285,6 @@ Job Reason Codes (NODELIST(RESON)) จะแสดงรายละเอีย
 แสดงข้อมูล Partition
 
     scontrol show partition
-
-ออกจากสถานะ “DRAIN” or “Down”  
-
-    scontrol update NodeName=compute[1-3] State=RESUME
 
 ---
 
@@ -446,8 +443,7 @@ Submit งานใช้ โดยใช้คำสั่ง %%sbatch แล�
     #SBATCH --job-name=mytest        # Job name
     #SBATCH --time=10:00:00 
     
-    # CUDA matrix multiplication
-    module load anaconda3
+    /home/${USER}/.bashrc
     conda activate test
     python program.py
 
@@ -468,8 +464,6 @@ Submit งานใช้ โดยใช้คำสั่ง %%sbatch แล�
     #SBATCH -o cp2k.%j.out          # Name of stdout output file (%j expands to jobId)
     #SBATCH --ntasks=200            # number of tasks per node
   
-    #CUDA matrix multiplication
-    
     singularity run --nv /opt/ohpc/pub/apps/singularity/cp2k_v9.1.0.sif prun  binder.sh cp2k.psmp -i H2O-dft-ls.NREP2.inp
 
   
