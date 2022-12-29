@@ -206,9 +206,9 @@ Slurm เป็นซอฟต์แวร์ Job scheduler มีหน้า�
 ในระบบได้มีการแบ่ง Partition (Resource group) ดังนี้
 | Partition | CPU Core | GPU | Node | Time limit |
 |--|--:|--:|--|--|
-| gpu |     64  | 16 | compute[1-2] | 72 hours |
-| cpu |   192  |   | compute[1-2] | 72 hours |
-| short | 128  |  8 | compute3     | 24 hours |
+| gpu |     64  | 16 | compute[1-2] | 7 days |
+| cpu |   192  |   | compute[1-2] | 7 days |
+| short | 128  |  8 | compute3     | 1 days |
 
 
 ขั้นตอนการใช้งาน
