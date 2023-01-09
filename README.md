@@ -95,6 +95,7 @@
 | abinit | abinit |
 | ampl  | ampl | 
 | anaconda  | anaconda3 | 
+| FreeSurfer | freesurfer |
 | gromacs | gromacs_gpu |   
 | gurobi  | gurobi |  
 | julia  | julia | 
