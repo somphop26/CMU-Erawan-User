@@ -17,7 +17,7 @@
 -   25Gbps
 -   200Gbps Infiniband
 
-### Nework share directory (via NFS)
+### Network share directory (via NFS)
 
 - /home 288TB (Read, Write)
 - /opt/ohpc/pub (Read only)
@@ -399,7 +399,7 @@ JOB REASON CODE (NODELIST(REASON)) จะแสดงรายละเอีย
     module load anaconda3
     conda create -n test python=3.7
 
-กำหนดไม่ให้ค่าเริ่มต้นใช้งานสภาพแวดล้อม base (สั่งครั้งเดียว) และกำหนด shell ในสภาพแวดล้อมเป็น bash จากนั้น logout และ Login ใหม่
+กำหนดไม่ให้ค่าเริ่มต้นใช้งานสภาพแวดล้อม base (สั่งครั้งเดียว) และกำหนด shell ในสภาพแวดล้อมเป็น bash จากนั้น logout และ login ใหม่
 
     conda config --set auto_activate_base False
     conda init bash
