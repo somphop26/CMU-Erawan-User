@@ -428,7 +428,6 @@ JOB REASON CODE (NODELIST(REASON)) จะแสดงรายละเอีย
 เข้าใช้งานบน web browser ระบุ URL: [https://erawan.cmu.ac.th:8000](https://erawan.cmu.ac.th:8000) แล้ว login เข้าระบบ
 
 ![enter image description here](https://github.com/somphop26/CMU-Erawan-User/blob/main/imp/jupyterHub.png?raw=true)
-![enter image description here](https://github.com/somphop26/CMU-Erawan-User/blob/main/imp/jupyterHubLogin.png?raw=true)
 
 
 คลิก + > เลือก Notebook
